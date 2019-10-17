@@ -1,0 +1,163 @@
+a,
+abbr,
+acronym,
+address,
+applet,
+article,
+aside,
+audio,
+b,
+big,
+blockquote,
+body,
+canvas,
+caption,
+center,
+cite,
+code,
+dd,
+del,
+details,
+dfn,
+div,
+dl,
+dt,
+em,
+embed,
+fieldset,
+figcaption,
+figure,
+footer,
+form,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+header,
+hgroup,
+html,
+i,
+iframe,
+img,
+ins,
+kbd,
+label,
+legend,
+li,
+mark,
+menu,
+nav,
+object,
+ol,
+output,
+p,
+pre,
+q,
+ruby,
+s,
+samp,
+section,
+small,
+span,
+strike,
+strong,
+sub,
+summary,
+sup,
+table,
+tbody,
+td,
+tfoot,
+th,
+thead,
+time,
+tr,
+tt,
+u,
+ul,
+var,
+video {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    vertical-align: baseline;
+}
+
+a {
+    text-decoration: none;
+    color: #4a90e2;
+}
+
+html {
+    /* 不要调整页面大小 */
+    -ms-text-size-adjust: 100%;
+    /* 浏览器前缀 */
+    -webkit-text-size-adjust: 100%;
+    overflow-y: scroll;
+    /*只能竖向滚动*/
+    -webkit-overflow-scrolling: touch;
+    /*让滚动更顺滑*/
+    width: 100%;
+    overflow-x: hidden;
+    height: 100%;
+    font-size: 100px;
+    background: #ffffff;
+    /* 安上去的高亮颜色 */
+    -webkit-tap-highlight-color: transparent;
+}
+
+body {
+    height: 100%;
+}
+
+#app {
+    text-align: center;
+    font-size: 0.16rem;
+    color: #000000;
+}
+
+.page {
+    text-align: left;
+    background: #ffffff;
+    padding: 0 0.25rem 0.25rem;
+}
+
+.quick-login {
+    margin-top: 0.88rem;
+    border-top: 1px solid rgba(0, 0, 0, .1);
+}
+
+.quick-login .txt-otherlogin {
+    color: rgba(0, 0, 0, .2);
+    width: 1.4rem;
+    margin: -0.11rem auto 0;
+    text-align: center;
+    background: #fff;
+}
+
+.quick-login .quick-type {
+    text-align: center;
+    margin: 0.25rem 0 .12rem;
+}
+
+.quick-login .quick-type a {
+    display: inline-block;
+    width: 0.48rem;
+    /* color: rgba(253, 30, 30, .4); */
+    margin: 0 0.15rem;
+    padding-top: 0.53rem;
+    background-size: 100% auto;
+    /* 水平保持100%，垂直是自动 */
+    background-repeat: no-repeat;
+    color: rgba(0, 0, 0, .4);
+}
+
+.quick-login .quick-type .icon-qq {
+    background-image: url(./a.txt);
+}
+
+.quick-login .quick-type .icon-wx {
+    background-image: url(./b.txt);
+}
