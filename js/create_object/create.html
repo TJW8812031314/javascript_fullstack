@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // JS中没有类，function + prototype 基于原型对象的面向对象
+        var person = {
+                name: "noname",
+                age: 0,
+                greet: function() {
+                    console.log(`Hello, ${this.name}`);
+
+                }
+            }
+            //es6 create方法
+        var tom = object.create(person); //返回对象
+        console.log(tom);
+        tom.name = 'tom';
+        tom.age = 24;
+        tom.greet();
+    </script>
+</body>
+
+</html>

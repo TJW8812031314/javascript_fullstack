@@ -1,0 +1,49 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+ul,
+li {
+  list-style: none;
+}
+ul html,
+li html {
+  color: #111;
+  background-color: #fff;
+}
+.section {
+  margin-bottom: 30px;
+  min-height: 200px;
+}
+.wrapper {
+  width: 950px;
+  margin: 0 auto;
+}
+.sidenav {
+  float: left;
+  width: 100px;
+  margin-right: 20px;
+}
+.sidenav h2 {
+  color: #072;
+  margin: 0 0 12px 0;
+  line-height: 150%;
+  font: 15px Arial, Helvetica, sans-serif;
+}
+.sidenav a {
+  font: 24px;
+  text-decoration: none;
+}
+.sidenav a .side-links {
+  margin-bottom: 40px;
+}
+.sidenav a li {
+  margin-top: 5px;
+  font-style: 14px;
+}
+.sidenav a li a {
+  color: #27a;
+}
+.sidenav a li a:hover {
+  color: #669;
+}
