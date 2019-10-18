@@ -1,15 +1,15 @@
 var baseObj = {
     //随机数
-    randowNum: function(min, max) {
+    randomNum: function(min, max) {
         //parseInt
         return parseInt(Math.random() * (max - min + 1) + min)
     },
 
     // 两个矩形元素之间的碰撞检测
     rectangleCrashExamine: function(obj1, obj2) {
-        var objiLeft = obj1.offsetLeft
-        var obj2Left = obj2.offsetLeft + obj1.offsetLeft
-        var objiTop = obj1.offsetTop
+        var objieft = obj1.offsetLeft
+        var obj2Left = obj2.offsetLeft + obj1.offsteWidth
+        var objTop = obj1.offsetTop
         var objHeight = obj1.offsetTop + obj1.ofHeight
 
         var obj2Left = obj2.offsetLeft

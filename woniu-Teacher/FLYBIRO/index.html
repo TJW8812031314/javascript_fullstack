@@ -27,7 +27,7 @@
         var jsHeadTitle = document.querySelector('.headTitle')
         var jsHeadBird = document.getElementById('headBird')
         var blocksArr = []
-        var blockDistance = baseobj.randomNum(120, 350)
+        var blockDistance = baseObj.randomNum(120, 350)
         var Y = 3
         var index = 0
         var imgArr = ["./img/bird0.png", "./img/bird1.png"]
@@ -42,7 +42,7 @@
                 index = 0
             }
         }
-
+        //草地动
         var jsGrassLand1 = document.getElementById("grassLand1")
         var jsGrassLand2 = document.getElementById("grassLand2")
 
@@ -61,8 +61,8 @@
             if (blocksArr.length) {
                 for (var i = 0; i < blocksArr.length; i++) {
                     blocksArr[i].moveBlock()
-                    var x = baseObj.rectangleCrashExamine(blocksArr[i].downDivwrap)
-                    var y = baseObj.rectangleCrashExamine(blocksArr[i].upDiDivwrap)
+                    var x = baseObj.rectangleCrashExamine(blocksArr[i].downDivWrap, bird.div)
+                    var y = baseObj.rectangleCrashExamine(blocksArr[i].upDivWrap, bird.div)
                     var z = bird.div.offsetTop >= 390
                     if (x || y || z) {
                         bird.fallSpeed = 0
