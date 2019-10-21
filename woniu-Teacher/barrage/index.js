@@ -29,7 +29,7 @@ class CanvasBarrage {
             //获取画布
         this.ctx = canvas.getContext('2d')
 
-        //设置默认参数
+        //设置默认参数，如果没有传参就使用默认参数
         let defOpts = {
             color: '#e91e63',
             speed: 1.5,
@@ -101,7 +101,7 @@ class Barrage {
     }
 
     init() {
-        //如果数据没有涉及到以下参数，就取默认值
+        //如果里面数据没有涉及到以下参数，就取默认值
         this.color = this.obj.color || this.context.color
         this.speed = this.obj.speed || this.context.speed
         this.opacity = this.obj.opacity || this.context.opacity
@@ -111,13 +111,13 @@ class Barrage {
         let p = document.createElement('p')
         p.style.fontSize = this.fontSize + 'px'
         p.innerHTML = this.value
-        document.body.appendChild(P)
+        document.body.appendChild(p)
         this.width = p.clientWidth
         document.body.removeChild(p)
 
         //设置弹幕出现的位置
         this.x = this.context.canvas.width
-        this.y = this.context.height * Math.random()
+        this.y = this.context.canvas.height * Math.random()
 
         if (this.y < this.fontSize) {
             this.y = this.fontSize

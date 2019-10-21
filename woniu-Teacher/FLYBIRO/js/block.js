@@ -5,7 +5,7 @@ function Block() {
     this.gapHeight = baseObj.randomNum(150, 160)
     this.upHeight = 312 - this.downHeight - this.gapHeight
 
-    //生成div
+    // 生成div的方法
     this.createDiv = function(url, height, positionType, left, top) {
         var newDiv = document.createElement('div')
         newDiv.style.width = '62px'
@@ -17,7 +17,6 @@ function Block() {
         return newDiv
     }
 
-    //生成管道
     this.createBlock = function() {
         // 生成上方管道
         var upDiv1 = this.createDiv("url(img/up_mod.png)", this.upHeight + "px")
@@ -25,7 +24,8 @@ function Block() {
         this.upDivWrap = this.createDiv(null, null, 'absolute', '450px')
         this.upDivWrap.appendChild(upDiv1)
         this.upDivWrap.appendChild(upDiv2)
-            //下方管道
+
+        // 生成下方管道
         var downDiv1 = this.createDiv("url(img/down_pipe.png)", '60px')
         var downDiv2 = this.createDiv("url(img/down_mod.png)", this.downHeight + 'px')
         this.downDivWrap = this.createDiv(null, null, 'absolute', '450px', 363 - this.downHeight + 'px')
@@ -34,13 +34,10 @@ function Block() {
 
         jsWrapBg.appendChild(this.upDivWrap)
         jsWrapBg.appendChild(this.downDivWrap)
-
     }
 
-    //移动
-    this.moveBlock = function() {
-        this.upDivWrap.style.left = this.upDivWrap.offsetLeft - 3 + "px"
-        this.downDivWrap.style.left = this.downDivWrap.offsetLeft - 3 + "px"
-
+    this.moveBlock = function() { //控制管道移动
+        this.upDivWrap.style.left = this.upDivWrap.offsetLeft - 3 + 'px'
+        this.downDivWrap.style.left = this.downDivWrap.offsetLeft - 3 + 'px'
     }
 }
