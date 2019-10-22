@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        //修改作用域的三大方法 显示绑定
+        var a = {
+                usre: '我',
+                fn: function(a, b) {
+                    console.log(this.usre)
+                    console.log(a + b)
+                }
+            }
+            // a.fn()
+        var b = a.fn
+        b.call(a, 1, 3)
+
+
+        var a = {
+                usre: '我',
+                fn: function(a, b) {
+                    console.log(this.usre)
+                    console.log(a + b)
+                }
+            }
+            // a.fn()
+        var b = a.fn
+        b.apply(null) //默认指向window
+        b.apply(a, 1, 3)
+
+        var a = {
+            usre: '我',
+            fn: function(a, b) {
+                console.log(this.usre)
+                console.log(a + b)
+            }
+        }
+        var b = a.fn
+        var c = b.bind(a)
+        c(1, 2)
+    </script>
+
+    <script>
+        //new 绑定法
+        function Foo(a) {
+            this.a = a
+            console.log(this.a)
+        }
+        var bar = new Foo(2)
+    </script>
+</body>
+
+</html>
