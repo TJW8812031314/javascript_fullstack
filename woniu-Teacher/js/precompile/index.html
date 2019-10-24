@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- <script>
+        //函数声明整体变量提升
+        // 变量   声明提升
+        //任何变量未声明就赋值， 此变量就会是全局变量
+        //一切声明的全局变量，都window所有
+
+        // var a;
+
+        // console.log(a)
+        // var a = 123
+        // console.log(a)
+        test()
+
+        function test() {
+            console.log('hello world')
+        }
+    </script> -->
+
+    <script>
+        // function fn(a) {
+        //     console.log(a)// function
+        //     var a = 123
+        //     console.log(a)//123
+        //     function a() {}
+        //     console.log(a)//123
+        //     var b = function() {}
+        //     console.log(a)//function
+        //     function d() {}
+        // }
+        // fn(1)
+        function test(a, b) {
+            console.log(a) //1
+            c = 0;
+            var c;
+            a = 3
+            b = 2
+            console.log(b) //2
+
+            function b() {}
+
+            function d() {}
+            console.log(b) //2
+        }
+        test(1)
+            //      AO {
+            //     // a: undefined
+            //     // b: undefined
+            //     // c: undefined
+
+        //     // a: 1
+
+        //     // b: function() {}
+        //     // d: function() {}
+
+        // }
+
+        //GO
+        //     GO {
+        //         global: undefined,
+        //         fn: function() {}
+        //     }
+        //     var global = 100
+
+        //     function fn() {
+        //         console.log(global)
+        //     }
+        //     fn()
+        //     AO {
+
+        //     }
+
+        // GO {
+        //     golobal: undefined
+
+        //         golobal: 100
+
+        //         golobal: 200
+        // }
+        golobal = 100
+
+        function fn() {
+            console.log(golobal)
+            golobal = 200
+            console.log(golobal)
+            var golobal = 300
+        }
+        // AO {
+        //     golobal: undefined
+
+        //         golobal: 200
+
+        //         golobal: 300
+        // }
+    </script>
+</body>
+
+</html>
