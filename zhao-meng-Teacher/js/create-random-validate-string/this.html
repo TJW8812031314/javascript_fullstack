@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="box">123456</div>
+    <script>
+        const box = document.getElementById('box');
+        // 普通函数 this 调用的时候决定， 定义的时候不算
+        // 箭头函数， 定义的时候即决定了 this就指向它的外面一层 而且  不能后继无法改变
+        // box.addEventListener('click', function() {
+        //     console.log(this === box);
+        // })
+
+        box.addEventListener('click', () => {
+            console.log(this === window); //ture
+        })
+
+        var obj = {
+            a: 1,
+            es5Function: function() {
+                console.log(this === obj);
+            }
+        }
+        var obj = {
+            a: 1,
+            es6Function: () => {
+                console.log(this === window);
+            }
+        }
+        obj.es5Function();
+        //obj1.es6Funcrion();
+        obj.es6Function();
+    </script>
+</body>
+
+</html>
