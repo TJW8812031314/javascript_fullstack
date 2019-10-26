@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // 回调函数
+        var name = ''
+            // resolve 赋予成功  reject赋予失败
+        function test() {
+            return new Promise((resolve, reject) => {
+                setTimeout(() => {
+                    console.log('猛哥')
+                    name = '猛哥'
+                    resolve('ok')
+                        // reject('error')
+                        // xq()
+                }, 500)
+            })
+        }
+
+        function xq() {
+            return new Promise((resolve, reject) => {
+                setTimeout(() => {
+                    console.log(name + '相亲')
+                    resolve('相亲顺利')
+                }, 1000)
+            })
+        }
+
+        function marry() {
+            console.log(name + '结婚了')
+        }
+        // test()
+        //     .then(xq)
+        //     .then(marry)
+
+        // .then((res) => {
+        //     console.log(res)
+        //     xq()
+        //         .then((res) => {
+        //             console.log(res)
+        //             marry()
+        //         })
+        // })
+
+
+        //Promise.all方法
+        // Promise.all([test(), xq()]).then((value) => {
+        //     console.log(value, '------------')
+        //     marry()
+        // })
+
+        //  Promise.race方法， 提高性能。  不论test先 还是qx先
+        Promise.rece([test(), xq()]).then((value) => {
+            console.log(value, '------------')
+            marry()
+        })
+
+
+        // .catch((err) => {
+        //     console.log(err)
+        // })
+    </script>
+</body>
+
+</html>
