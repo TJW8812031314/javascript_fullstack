@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <button id="btn"></button>
+    <script>
+        // map
+        // key value
+        const btn = document.getElementById('btn');
+        var map = {
+            name: 'lihua',
+            [btn]: 'dom node'
+        }
+        map['0'] = 'b val';
+        map['3'] = 'a val';
+        map['2'] = 'c val';
+        map['1'] = 'd val';
+
+        let map1 = new Map([
+            ['key', 'value']
+        ]);
+        map1.set('key', 'value1'); // 添加
+        map1.get('key'); // 获取
+        map1.set(() => {}, 'function');
+        // 数组 Map....
+        for (let entey of map1) {
+            console.log(entey)
+        }
+        console.log(btn);
+        console.log(Object.keys(map));
+        console.log(map1);
+        // 有什么用
+        // 为什么 es6 要增加一个Map
+        // 1. 以前key 只支持字符串
+        // 2. 以前的key 无序
+        var NameMap = {
+            lihua: 'sing',
+            lilei: 'dance',
+            nlizhi: 'rap',
+            name: 'name'
+        }
+
+        function doSomething(name) {
+            // name == Lihua 输出 sing
+            // name == lilei 输出 dance
+            // name == lizhi 输出 rap
+            console.log(NameMap[name]);
+            // 加[]
+        }
+        doSomething('lihua')
+            // map1.delete('key') 删除;map1.clear()清空
+            // map1.entries() [key, value]
+            // map1.keys()
+            // map1.values()
+
+        // 扩展运算符
+        console.log(...[1, 2, 4]);
+        // foo[1, 2, 4]
+        console.log(Math.max(9, 8, 2));
+        onsole.log(Math.max(...[9, 8, 2]));
+        let a = [1, 2, 3];
+        let b = [4, 5, 6];
+        // a.push(4, 5);
+        a.push(...b);
+    </script>
+</body>
+
+</html>
