@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+  // function isType(type, value) {
+  //   return Object.prototype
+  //   .toString.call(value) === `[object ${type}`
+  // }
+  // function isString(value) {
+  //   return isType('String', value);// 给type 加一个固定值
+  // }
+  // function isFunction(value) {
+  //   return isType('Function', value);
+  // }
+  // function isNumber(value) {
+  //   return isType('isNumber', value);
+  // }
+  const String = isType.bind(null, 'String');
+  const isFunction = isType.bind(null, 'Function')
+  function add(a, b) {
+    return a + b;
+  }
+  function add5() {
+    return add(5, b)
+  }
+  // 有没有什么东西 能把第一个参数 固定住
+  console.log(isType('String', '123'));
+  console.log(isType('String', '456'));
+  console.log(isType('Function', () => {}));
+
+    // 函数式编程  过程抽象
+    // 面向对象  数据抽象
+  </script>
+</body>
+</html>
