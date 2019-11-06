@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+  * {
+    margin: 0;padding: 0;
+  }
+  .box-wrapper {
+    width: 100%;
+    /*清除浮动的放法设置成 bfc 容器
+    /* overflow: hidden; /*auto, scale,
+    float: left;
+    display: table-cell; 
+    position: absolute;
+    position: fixed;*/
+  }
+  .box {
+    width: 100px;
+    height: 100px;
+    background-color: red;
+    /* display: inline-block; */
+    line-height: 100px;
+    text-align: center;
+    /* float: left; */
+    
+    /* margin 塌陷 */
+    margin-top: 20px;
+    margin-bottom: 30px;
+  }
+</style>
+</head>
+<body>
+  <!-- bfc -->
+  <!-- block  -->
+  <div class="box-wrapper clearfix">
+    <div class="box">1</div>
+    <div class="box">2</div>
+    <div class="box">3</div> 
+  </div>
+  <div class="text">hello world</div>
+</body>
+</html>
