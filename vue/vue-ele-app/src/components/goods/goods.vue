@@ -40,11 +40,16 @@
                   <p class="desc">{{food.description}}</p>
                   <div class="extra">
                     <span class="count">月售{{food.sellCount}}份</span>
-                    <span class="">好评率{{food.rating}}%</span>
+                    <span>好评率{{food.rating}}%</span>
                   </div>
                   <div class="price">
                     <span class="now">￥{{food.price}}</span>
                     <span class="old" v-if="food.oldPrice">￥{{food.oldPrice}}</span>
+                  </div>
+                  <div class="cartcontrol-wrapper">
+                    <!-- 父组件给子组件传值 -->
+                    <cartcontrol :food="food" @add="addFood"></cartcontrol>
+                    <!-- + -->
                   </div>
                 </div>
               </li>
@@ -54,15 +59,25 @@
       </div>
     </div>
     <!-- 购物车 -->
-    <shopcart></shopcart>
+    <shopcart
+    :selectFoods = "selectFoods"
+    :deliveryPrice = "seller.deliveryPrice"
+    :minPrice = "seller.minPrice"
+    ></shopcart>
   </div>
 </template>
 
 <script>
 import Bscroll from 'better-scroll'
 import shopcart from '@/components/shopcart/shopcart.vue'
+import cartcontrol from '@/components/cartcontrol/cartcontrol.vue'
 export default {
   name: 'Goods',
+  props: {
+    seller: {
+      type: Object
+    }
+  },
   data () {
     return {
       goods: [1, 2, 3, 4, 5, 6, 7, 8, 9],
@@ -72,7 +87,8 @@ export default {
     }
   },
   components: {
-    shopcart
+    shopcart,
+    cartcontrol
   },
   created () {
     this.$http.get('http://localhost:8080/static/goods.json')
@@ -99,6 +115,19 @@ export default {
         }
       }
       return 0
+    },
+    selectFoods () {
+      let foods = []
+      for (let good of this.goods) {
+        if (good.foods) {
+          for (let food of good.foods) {
+            if (food.count) {
+              foods.push(food)
+            }
+          }
+        }
+      }
+      return foods
     }
   },
   methods: {
@@ -140,6 +169,9 @@ export default {
       }
       console.log(this.listHeight)
       // clientHeigth 获取当前容器高度
+    },
+    addFood () {
+
     }
   }
 }
@@ -166,10 +198,10 @@ export default {
       padding 0 12px
       line-height 14px
       &.current
-        position absolute
+        position relative
         z-index 10
         margin-top -1px
-        background-color #fff
+        background #fff
         font-weight 700
         .text
           border-none()
