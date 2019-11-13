@@ -112,19 +112,20 @@ export default {
       }
     },
     listShow () {
+      var self = this
       if (!this.totalCount) {
-        this.fold = true
+        self.fold = true
         return false
       }
       let show = !this.fold
       if (show) {
         this.$nextTick(() => {
           if (!this.scroll) {
-            this.scroll = new Bscroll(this.$refs.listContent, {
+            self.scroll = new Bscroll(this.$refs.listContent, {
               click: true
             })
           } else {
-            this.scroll.refresh()
+            self.scroll.refresh()
           }
         })
       }
