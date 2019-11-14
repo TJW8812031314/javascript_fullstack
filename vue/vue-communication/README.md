@@ -1,4 +1,4 @@
-# vue-ele-app
+# vue-communication
 
 > A Vue.js project
 
@@ -19,6 +19,4 @@ npm run build --report
 ```
 
 For a detailed explanation on how things work, check out the [guide](http://vuejs-templates.github.io/webpack/) and [docs for vue-loader](http://vuejs.github.io/vue-loader).
-- 项目链接：https://chenyubo.me/vue-eleme-app/dist/index.html#/seller
-- 父组件如何调用子组件的方法 添加ref 就可以拿到
-- getBoundingCliRect() 获取当前容器的几何信息
+-当你不知道数据类型判断  Object.prototype.toString.call(val)

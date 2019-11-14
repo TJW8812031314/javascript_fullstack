@@ -1,0 +1,36 @@
+<template>
+  <div class="container">
+    <div>
+      <ul class="red">
+        <li v-for="item in myObj" :key="item.id"></li>
+      </ul>
+    </div>
+    <child v-bind:send-msg="myMsg" :send-num="myNum" :snnd-obj="myObj"></child>
+  </div>
+</template>
+
+<script>
+import child from './child'
+export default {
+  data () {
+    return {
+      myMsg: '我是父组件的信息',
+      myNum: 123,
+      myObj: [
+        {
+          id: 1,
+          name: 张三
+        },
+        {
+          id: 2,
+          name: 李四
+        }
+      ]
+    }
+  }
+}
+</script>
+
+<style>
+
+</style>
