@@ -3,37 +3,35 @@
     <h2>子组件</h2>
     <p>从父组件接收到的数据是：</p>
     <div>
-      string: <span class="red">{{sendMsg}}</span>
+      String:<span class="red">{{sendMsg}}</span>
     </div>
     <div>
-      number: <span class="red">{{sendNum}}</span>
+      NUmber:<span>{{sendNum}}</span>
     </div>
     <div>
-      <ul class="red">
-        <li v-for="item in myObj" :key="item.id"></li>
-      </ul>
+      <li v-for="item in sendObj" :key="item.id">{{item.name}}</li>
     </div>
   </div>
-
 </template>
 
 <script>
 export default {
-  porps: {
-    sendMsg: {
-      type: String,
-      required: true
+  props: {
+    sendMsg:{
+      type: String
+      // required: true
     },
-    sendNum: {
+    sendNum:{
       type: Number,
-      required: false
+      // required: false
     },
     sendObj: {
-      // 声明类型
+      //声明验证类型
       validator (val) {
-        if (Object.prototype.toString.call(val) === "[object Array]"||
-        Object.prototype.toString.call(val) ==="[object object]") {
-
+        if(Object.prototype.toString.call(val) === '[object Array]' ||
+           Object.prototype.toString.call(val) === '[object object]')
+           {
+           return true
         }
       }
     }

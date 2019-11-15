@@ -5,6 +5,7 @@
       <router-link to='./d1'>父子组件通信1</router-link>
       <router-link to='./d2'>父子组件通信2</router-link>
       <router-link to='./d3'>父子组件通信3</router-link>
+      <router-link to='./d4'>父子组件通信4</router-link>
     </p>
     <router-view/>
   </div>

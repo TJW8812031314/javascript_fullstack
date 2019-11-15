@@ -57,8 +57,8 @@
 </template>
 
 <script>
-import cartcontrol from '@/components/cartcontrol/cartcontrol'
-import BScroll from 'better-scroll'
+import cartcontrol from '@/components/cartcontrol/cartcontrol.vue'
+import Bscroll from 'better-scroll'
 export default {
   props: {
     selectFoods: {
@@ -116,43 +116,44 @@ export default {
       return count
     },
     totalPrice () {
-      let total = 0
+      let price = 0
       this.selectFoods.forEach((food) => {
-        total += food.price * food.count
+        price += food.price * food.count
       })
-      return total
+      return price
     },
     payDesc () {
       if (this.totalPrice === 0) {
-        return `¥${this.minPrice}元起送`
+        return `￥${this.minPrice}元起送`
       } else if (this.totalPrice < this.minPrice) {
         let diff = this.minPrice - this.totalPrice
-        return `还差¥${diff}元起送`
+        return `￥还差${diff}元起送`
       } else {
-        return '去结算'
+        return `去结算`
       }
     },
     payClass () {
       if (this.totalPrice < this.minPrice) {
-        return 'not-enough'
+        return `not-enough`
       } else {
-        return 'enough'
+        return `enough`
       }
     },
     listShow () {
+      var self = this
       if (!this.totalCount) {
-        this.fold = true
+        self.fold = true
         return false
       }
       let show = !this.fold
       if (show) {
         this.$nextTick(() => {
           if (!this.scroll) {
-            this.scroll = new BScroll(this.$refs.listContent, {
+            self.scroll = new Bscroll(this.$refs.listContent, {
               click: true
             })
           } else {
-            this.scroll.refresh()
+            self.scroll.refresh()
           }
         })
       }
@@ -193,7 +194,7 @@ export default {
           let rect = ball.el.getBoundingClientRect()
           let x = rect.left - 32
           let y = -(window.innerHeight - rect.top - 22)
-          el.style.display = '';
+          el.style.display = ''
           el.style.transform = `translate3d(0, ${y}px, 0)`
           let inner = el.getElementsByClassName('inner-hook')[0]
           inner.style.transform = `translate3d(${x}px, 0, 0)`
@@ -201,7 +202,7 @@ export default {
       }
     },
     dropping (el, done) {
-      let rf = el.offsetHeight;
+      let rf = el.offsetHeight
       this.$nextTick(() => {
         el.style.transform = `translate3d(0, 0, 0)`
         let inner = el.getElementsByClassName('inner-hook')[0]
@@ -222,6 +223,7 @@ export default {
 
 <style lang="stylus" rel="stylesheet/stylus">
   @import "../../common/stylus/mixin.styl"
+
   .shopcart
     position fixed
     left 0

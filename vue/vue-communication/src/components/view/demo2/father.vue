@@ -5,7 +5,7 @@
         <li v-for="item in myObj" :key="item.id"></li>
       </ul>
     </div>
-    <child v-bind:send-msg="myMsg" :send-num="myNum" :snnd-obj="myObj"></child>
+    <child v-bind:send-msg="myMsg" :send-num="myNum" :send-obj="myObj"></child>
   </div>
 </template>
 
@@ -19,14 +19,17 @@ export default {
       myObj: [
         {
           id: 1,
-          name: 张三
+          name: '张三'
         },
         {
           id: 2,
-          name: 李四
+          name: '李四'
         }
       ]
     }
+  },
+  components: {
+    child
   }
 }
 </script>

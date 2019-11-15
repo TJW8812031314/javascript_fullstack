@@ -1,4 +1,4 @@
-# qunar-webapp
+# vue-weather
 
 > A Vue.js project
 
@@ -19,11 +19,4 @@ npm run build --report
 ```
 
 For a detailed explanation on how things work, check out the [guide](http://vuejs-templates.github.io/webpack/) and [docs for vue-loader](http://vuejs.github.io/vue-loader).
-# 懒加载
-() => import('')
-cnpm i axios vue-awesome-swiper -S 安装插件
-swiper：https://github.com/surmon-china/vue-awesome-swiper
-项目链接：http://118.25.39.84/#/
-npm i better-scroll -S 滚动动插件
-子容器的高度超出父容器高度
-
+npm i -g vue-cli@2.9.6

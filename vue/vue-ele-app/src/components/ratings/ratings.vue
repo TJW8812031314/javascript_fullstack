@@ -1,26 +1,74 @@
 <template>
   <div class="ratings">
-    <div class="overview">
-      <div class="overiview-left">
-        <h1 class="scroe">{{seller.score}}</h1>
-        <div class="title">综合评分</div>
-        <div class="rank">高于周边商家{{seller.rankRate}}</div>
+    <div class="rating-content">
+      <div class="overview">
+        <div class="overiview-left">
+          <h1 class="scroe">{{seller.score}}</h1>
+          <div class="title">综合评分</div>
+          <div class="rank">高于周边商家{{seller.rankRate}}</div>
+        </div>
+        <div class="overiview-right">
+          <div class="score-wrapper">
+            <span class="title">服务态度</span>
+            <div class="star star-36">
+              <span class="star-item" v-for="index of 5" :key="index" :class="{'on':seller.serviceScore > 0}"></span>
+            </div>
+            <span class="score">{{seller.serviceScore}}</span>
+          </div>
+          <div class="score-wrapper">
+            <span class="title">商品评分</span>
+            <div class="star star-36">
+              <span class="star-item"></span>
+            </div>
+            <span class="score">{{seller.foodScore}}</span>
+          </div>
+          <div class="delivery-wrapper">
+            <span class="title">送达时间</span>
+            <span class="delivery">38分钟</span>
+          </div>
+        </div>
       </div>
-      <div class="overiview-right">
-        <div class="score-wrapper">
-          <span class="title">服务态度</span>
-          <div class="star star-36">
-            <span class="star-item"></span>
-          </div>
-          <span class="score">{{seller.serviceScore}}</span>
+      <div class="split"></div>
+      <div class="ratingselect">
+        <div class="rating-type border-1px">
+          <span class="block-positive active">全部
+            <span class="count">24</span>
+          </span>
+          <span class="block-positive">满意
+            <span class="count">18</span>
+          </span>
+          <span class="block-negative">不满意
+            <span class="count">6</span>
+          </span>
         </div>
-        <div class="score-wrapper">
-          <span class="title">商品评分</span>
-          <div class="star star-36">
-            <span class="star-item"></span>
-          </div>
-          <span class="score">{{seller.foodScore}}</span>
+        <div class="switch on">
+          <span class="icon-chek_cricle"></span>
+          <span class="text">只看有内容的评价</span>
         </div>
+      </div>
+      <div class="rating-wrapper">
+        <ul>
+          <li class="rating-item">
+            <div class="avatar">
+              <img src="" alt="">
+            </div>
+            <div class="content">
+              <h1 class="name"></h1>
+              <div class="star-wrapper">
+                <div class="star star-24">
+                  <span class="star-item"></span>
+                </div>
+                <span class="delivery">30</span>
+              </div>
+              <p class="text">不错粥挺好</p>
+              <div class="recommend">
+                <span class="icon-thumb_up"></span>
+                <span class="item">南瓜粥</span>
+              </div>
+              <div class="time">2016-07-23</div>
+            </div>
+          </li>
+        </ul>
       </div>
     </div>
   </div>
@@ -51,11 +99,10 @@ export default {
           this.seller = Object.assign({}, this.seller, res.data.data)// 合并对象
         }
       })
-  },
+  }
   // computed: {
   //   starIndex () {
   //     for (let i = 0; i < 5; i++) {
-
   //     }
   //   }
   // }
@@ -73,7 +120,6 @@ export default {
   .overview
     display flex
     padding 0 18px
-    height 80px
     .overiview-left
       flex: 0 0 137px;
       padding 6px 0 6px 0
@@ -109,5 +155,4 @@ export default {
             display inline-block
             margin 0 12px
             vertical-align top
-
 </style>
