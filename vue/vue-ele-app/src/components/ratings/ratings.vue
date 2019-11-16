@@ -155,4 +155,18 @@ export default {
             display inline-block
             margin 0 12px
             vertical-align top
+      .delivery-wrapper
+        font-size 0
+        .title
+          line-height 18px
+          font-size 12px
+          color #07111b
+        .delivery
+          margin-left 12px
+          font-size 12px
+          color #93999f
+  .split
+    width 100%
+    height 16px
+    border 1px solid rgba(7, 17, 21, 1)
 </style>
