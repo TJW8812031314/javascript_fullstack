@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>无论 new 多少次只有一个实例</title>
+</head>
+<body>
+  <script>
+    function Foo() {
+      // this.a = 1;
+      // this.b = 2;
+      // 条件：有返回值 返回一个对象
+      return {a: 1, b: 2}
+    }
+    let f1 = new Foo();
+    console.log(f1);
+
+
+    // new 过程
+    // new 生成一个对象返回一个对象
+    // 构造一个全局变量，无论new 多少次都生成一个实例
+    let globalIns
+  function Notifi() {
+    if(globalIns) {
+      return globalIns
+    }
+    globalIns = this
+    // return {a: 1, b: 2}
+  }
+    let ins1 = new Notifi();
+    let ins2 = new Notifi();
+    // 无论 new 多少次只有一个实例
+    console.log(ins1 === ins2);// true
+  </script>
+</body>
+</html>

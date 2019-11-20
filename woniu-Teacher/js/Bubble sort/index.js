@@ -8,14 +8,14 @@ function mpFun(arr) {
   // 轮数
   for (let i = 0; i < arr.length-1; i++) {
     // 次数
-    for (let j = 0; i < arr.length-1-i; i++) {
+    for (let j = 0; j < arr.length-1-j; j++) {
       if (arr[j] > arr[j+1]) {
       // 借助第三个变量进行交互
         let temp = arr[j]
         arr[j] = arr[j+1]
         arr[j + 1] = temp
       }
-    }s
+    }
   }
   return arr
 }
