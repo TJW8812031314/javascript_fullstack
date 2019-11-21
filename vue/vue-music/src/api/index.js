@@ -1,6 +1,6 @@
-import vue from 'vue'
+import Vue from 'vue'
 import axios from 'axios'
-const vue = new vue()
+const vue = new Vue()
 
 // axios配置 请求不超过10s
 axios.defaults.timeout = 10000
@@ -47,5 +47,8 @@ export default {
   // 歌单
   DiscList (params) {
     return fetchGet('/top/palyList', params)
+  },
+  HotSearchkey () {
+    return fetchGet('/search/hot')
   }
 }
