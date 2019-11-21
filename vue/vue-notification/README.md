@@ -25,3 +25,6 @@ For a detailed explanation on how things work, check out the [guide](http://vuej
 耗费内存，new一次生成一份dom结构
 - 单例的
 优点：无论new调用多少次只生成一份dom结构只是修改其中的值
+- 依赖
+  -D --save-dev // 开发环境  src
+  -S --save     // 生产环境  dist
