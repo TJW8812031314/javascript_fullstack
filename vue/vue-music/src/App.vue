@@ -2,22 +2,28 @@
   <div id="app">
     <!-- 头部 -->
     <v-header>
-      <i class="icon" slot="let-icon">&#xe692;</i>
+      <i class="icon" slot="left-icon">&#xe692;</i>
       <span slot="content">我的音乐</span>
       <router-link to="/user" slot="right-icon">
         <i class="icon">&#xe63c;</i>
       </router-link>
     </v-header>
-    <!-- <router-view/> -->
+    <v-tab></v-tab>
+    <router-view/>
+    <v-sidebar></v-sidebar>
   </div>
 </template>
 
 <script>
+import tab from '@/components/tab'
 import header from '@/components/header'
+import sidebar from '@/components/sidebar'
 export default {
   name: 'App',
   components: {
-    'v-header': header
+    'v-header': header,
+    'v-sidebar': sidebar,
+    'v-tab': tab
   }
 }
 </script>
