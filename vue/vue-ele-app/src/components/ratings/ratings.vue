@@ -1,6 +1,6 @@
 <template>
-  <div class="ratings">
-    <div class="ratings-content" ref="ratingsContent">
+  <div class="ratings" ref="ratingsContent">
+    <div class="ratings-content">
       <div class="overview">
         <div class="overiview-left">
           <h1 class="scroe">{{seller.score}}</h1>
@@ -154,7 +154,7 @@ export default {
     }
   }
 }
-</script>s
+</script>
 
 <style lang="stylus" scoped>
 ul
@@ -192,6 +192,7 @@ ul
         font-size 10px
         color #93999f
     .overiview-right
+      -webkit-box-flex 1
       flex 1
       padding 6px 0 6px 24px
       .score-wrapper
@@ -243,12 +244,13 @@ ul
     border-top 1px solid rgba(7,17,27,.1)
     border-bottom 1px solid rgba(7,17,27,.1)
     background #f3f5f7
+  .ratingselect
     .rating-type
       padding 18px 0
       margin 0 18px
       position relative
       font-size 0
-      &::after
+      &:after
         display block
         position: absolute
         left 0
@@ -264,9 +266,6 @@ ul
         border-radius 1px
         font-size 12px
         color #4d555d
-        .count
-          margin-left 2px
-          font-size 8px
       .block.positive.active
         background #00a0dc
         color #fff
@@ -274,6 +273,10 @@ ul
         background rgba(0,160,220,.2)
       .block.negative
         background: rgba(77,85,93,.2)
+        .count
+          margin-left 2px
+          font-size 8px
+
     .switch
       padding 12px 18px
       line-height: 24px
