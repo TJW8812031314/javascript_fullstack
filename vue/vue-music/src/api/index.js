@@ -50,5 +50,8 @@ export default {
   },
   HotSearchkey () {
     return fetchGet('/search/hot')
+  },
+  MusicSearch (params) {
+    return fetchGet('/search', params)
   }
 }

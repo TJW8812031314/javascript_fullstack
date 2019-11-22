@@ -1,7 +1,7 @@
 <template>
   <div class="search">
     <div class="search-box-wrapper">
-      <v-search @qurey= onQureyChange></v-search>
+      <v-search @query="onQureyChange" ref="searchBox"></v-search>
     </div>
     <!-- 热门搜索和搜索历史 -->
     <div class="shortcut-wrapper">
@@ -22,18 +22,20 @@
         <div class="search-history">
           <h1 class="title">
             <span class="text">搜索历史</span>
-            <span class="clear">
+            <span class="clear" @click="clearSearchHistory">
               <i class="icon">&#xe612;</i>
             </span>
           </h1>
           <!-- 搜索历史列表 -->
-        <v-search-list :searches="searchHistory"></v-search-list>
+        <v-search-list :searches="searchHistory" @select="saveSearch" @delete="deleteSearchHistory"></v-search-list>
         </div>
         </div>
       </v-scroll>
     </div>
-    <!-- 搜索框 -->
-
+    <!-- 搜索result -->
+    <div class="search-result">
+      <v-suggest :query="query"></v-suggest>
+    </div>
   </div>
 </template>
 
@@ -42,29 +44,32 @@ import searchBox from '@/components/searchBox'
 import scroll from '@/components/scroll'
 import api from '@/api'
 import searchList from '@/components/searchList'
-import { mapGetters} from 'vuex'
+import { mapGetters } from 'vuex'
+import { searchMixin } from '@/common/mixin'
+import suggest from '@/components/suggest'
 export default {
   data () {
     return {
       shortcut: [],
-      hotKey: [1, 2455, 46, 667],
-      searchHistory: []
+      hotKey: [1, 2455, 46, 667]
     }
   },
   components: {
     'v-search': searchBox,
     'v-scroll': scroll,
-    'v-search-list': searchList
+    'v-search-list': searchList,
+    'v-suggest': suggest
   },
   computed: {
     ...mapGetters([
-      'searchHistory '
+      'searchHistory'
     ])
   },
+  mixins: [searchMixin],
   methods: {
-    onQureyChange (e) {
-      console.log(e)
-    },
+    // onQureyChange (e) {
+    //   console.log(e)
+    // },
     _getHotKey () {
       api.HotSearchkey().then((res) => {
         if(res.code == 200) {
@@ -124,5 +129,9 @@ export default {
             .icon
               font-size 18px
               color hsla(0, 0%, 100%, 0.3)
-
+  .search-result
+    position fixed
+    width 100%
+    top px2rem(360px)
+    bottom 0
 </style>
