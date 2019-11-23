@@ -4,11 +4,11 @@
       <v-search @query="onQureyChange" ref="searchBox"></v-search>
     </div>
     <!-- 热门搜索和搜索历史 -->
-    <div class="shortcut-wrapper">
+    <div class="shortcut-wrapper" v-show="!query">
       <v-scroll class="shortcut" :data="shortcut" ref="shorcut">
         <div>
           <!-- 热门搜索 -->
-          <div class="hot-key">
+          <div class="hot-key" v-show="query">
             <h1 class="title">热门搜索</h1>
             <ul>
               <li class="item" v-for="(item, index) in hotKey" :key="index">
@@ -27,14 +27,14 @@
             </span>
           </h1>
           <!-- 搜索历史列表 -->
-        <v-search-list :searches="searchHistory" @select="saveSearch" @delete="deleteSearchHistory"></v-search-list>
+          <v-search-list :searches="searchHistory" @select="saveSearch" @delete="deleteSearchHistory"></v-search-list>
         </div>
         </div>
       </v-scroll>
     </div>
     <!-- 搜索result -->
-    <div class="search-result">
-      <v-suggest :query="query"></v-suggest>
+    <div class="search-result" v-show="query">
+      <v-suggest :query="query" @select="saveSearch" @listScroll="blurInput" ref="suggest"></v-suggest>
     </div>
   </div>
 </template>
@@ -74,7 +74,7 @@ export default {
       api.HotSearchkey().then((res) => {
         if(res.code == 200) {
           // 截取前十个数据
-          this.hotKey = res.result.hots.slice(0, 10)
+          this.hotKey = res.result.hots.splice(0, 10)
         }
         console.log(res)
       })

@@ -79,7 +79,7 @@ props: {
   },
   methods: {
     _initScroll () {
-      // !this.$refs.wrapper 跟 $nexti
+      // !this.$refs.wrapper 跟 $nexti相同
       if (!this.$refs.wrapper) {
         return
       }
@@ -94,19 +94,56 @@ props: {
           this.$emit('scroll', pos)
         })
       }
+      // 派发页面上拉加载更多
+      if (this.pullup) {
+        this.scroll.on('scrollEnd', () => {
+          if (this.scroll.y <= (this.scroll.maxScrollY + 50)) {
+            this.$emit('scrollToEnd')
+          }
+        })
+      }
+      // 派发下拉刷新
+      if (this.pulldown) {
+        this.scroll.on('touchend', (pos) => {
+          if (pos.y > 50) {
+            this.$emit('pulldown')
+          }
+        })
+      }
+      // 是否派发列表滚动开始事件
+      if (this.beforeScroll) {
+        this.scroll.on('beforeScrollStart', () => {
+          this.$emit('beforeScroll')
+        })
+      }
     },
-    refresh () {
+    disable() {
+      // 代理better-scroll的disable方法
+      this.scroll && this.scroll.disable()
+    },
+    enable() {
+      // 代理better-scroll的enable方法
+      this.scroll && this.scroll.enable()
+    },
+    refresh() {
+      // 代理better-scroll的refresh方法
       this.scroll && this.scroll.refresh()
-      // if (this.scroll) {
-      //   this.scroll.refresh()
-      // }
-    }
+    },
+    scrollTo() {
+      // 代理better-scroll的scrollTo方法
+      this.scroll && this.scroll.scrollTo.apply(this.scroll, arguments)
+    },
+    scrollToElement() {
+      // 代理better-scroll的scrollToElement方法
+      this.scroll && this.scroll.scrollToElement.apply(this.scroll, arguments)
+    },
+
   },
   watch: {
     data () {// 监听数据变化，延xxx时间后刷新better-scroll的效果， 保证滚动
       setTimeout(() => {
         this.refresh()
-      }, refreshDelay)
+      }, this.refreshDelay)
     }
   }
 }

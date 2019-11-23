@@ -1,7 +1,7 @@
 <template>
   <div class="search-list">
     <transition-group name="list" tag="ul">
-      <li class="seach-item" v-for="(item, index) in searches" :key="item" @click="selectItem(item)">
+      <li class="search-item" v-for="(item, index) in searches" :key="item" @click="selectItem(item)">
         <span class="text">{{item}}</span>
         <span class="icon-box" @click.stop="deleteOne(index)">
           <i class="icon">&#xe656;</i>
@@ -43,20 +43,13 @@ export default {
     align-items center
     height 40px
     overflow hidden
-
     &.list-enter-active, &.list-leave-active 
       transition all 0.1s
-    
-
     &.list-enter, &.list-leave-to 
       height 0
-    
-
     .text 
       flex 1
       color hsla(0,0%,100%,.5)
-    
-
     .icon-box 
       .icon 
         font-size 18px

@@ -12,3 +12,9 @@ export function debounce (func, delay) {
     }, delay);
   }
 }
+// findIndex 获取索引，查找数组下标
+export function findIndex (list, song) {
+  return list.findIndex((item) => {
+    return item.id === song.id
+  })
+}

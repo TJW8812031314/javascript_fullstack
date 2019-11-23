@@ -31,7 +31,7 @@ export default {
   methods: {
     blur () {
       // input自带失去焦点的方法bulr()
-      this.$refs.query.bulr()
+      this.$refs.query.bulr
     },
     clear() {
       this.query = ''
