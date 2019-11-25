@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>js异步</title>
+  <style>
+  .light {
+    width: 20px; height: 20px;
+    border: 1px solid #000;
+    background-color: black;
+  }
+  </style>
+</head>
+<body>
+  <div class="light"></div>
+  <script>
+    let Light = document.querySelector('.light');
+    let step1 = () => new Promise((resolve, reject) => {
+      setTimeout(() => {
+        Light.style.backgroundColor = 'red'
+        resolve('成功');
+      }, 1000);
+    })
+    // .then
+    let step2 = () => new Promise((resolve, reject) =>{
+      setTimeout(() => {
+        Light.style.backgroundColor = 'green'
+        resolve('成功了');
+      }, 2000);
+    })
+    // Promise
+    step1()
+      .then(res => {
+        // then return promise 之后后面接着调用 .then
+        return step2();
+      })
+      .then(res => {
+        console.log(res);
+      })
+      // async await方法
+      async function run() {
+        await step1();
+        await step2();
+      }
+      run();
+  </script>
+</body>
+</html>
