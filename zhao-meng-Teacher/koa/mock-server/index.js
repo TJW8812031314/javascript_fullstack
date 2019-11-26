@@ -21,7 +21,7 @@ router.get('/user', async (ctx) => {
 const glob = require('glob');
 const path = require('path')
 // 同步读取api下每一个json路径, 拿到名字从/api切开
-glob.sync(path.resolve('/api', '*.json'))
+glob.sync(path.resolve('./api/', '*.json'))
 .forEach((item, i) => {
   console.log('item', item);// /api/user.json
   // /user.json
