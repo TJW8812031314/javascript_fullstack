@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>监测数组</title>
+</head>
+<body>
+  <ul id="list"></ul>
+  <script>
+    let msgList = [{msg: '1'}]
+    function h() {
+      document.getElementById('list').innerHTML = msgList
+      .map((item) => {
+        return `<li>${item.msg}</li>`
+      }).join('')
+    }
+    h();
+    // Array.prototype.push()
+    // 给数原型扩展一个方法
+    Array.prototype.reserverJoin = function () {
+
+    }
+    // js自带的push监测不到数组变化，自己写一个push
+    const originPush = Array.prototype.push;
+    Array.prototype.push = function (...args) {
+      // 1.自定义的功能
+      // 第一层的this
+      // console.log(this)
+      console.log('我知道 数组变了')
+      // 2. 恢复push功能
+      // this === msgList
+      originPush.apply(this, args);
+      console.log(this)
+      h()
+    }
+    msgList.push({msg: 2})
+    msgList.push({msg: 3})
+    let a = null
+    console.log(String(a))
+  </script>
+</body>
+</html>
