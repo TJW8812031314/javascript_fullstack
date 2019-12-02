@@ -14,7 +14,7 @@ http.createServer((req, res) => {
       res.end(`${filePath}: 404`)
       return 
     }
-    // 如果是
+    // 如果是文件
     if (stats.isFile()) {
       res.statusCode = 200;
       fs.createReadStream(filePath).pipe(res)
