@@ -37,7 +37,16 @@ let getAllusers = function () {
   let _sql = `select * from users;`
   return allServices.query(_sql)
 }
+// 用户登入需要匹配
+// 用户登录
+// 用户登录
+let userLogin = function (username, userpwd) {
+  let _sql = `select * from users where username="${username}" and userpwd="${userpwd}";`
+  return allServices.query(_sql)
+}
+
 
 module.exports = {
-  getAllusers
+  getAllusers,
+  userLogin
 }

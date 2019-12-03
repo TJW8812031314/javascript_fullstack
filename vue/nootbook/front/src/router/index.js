@@ -3,6 +3,8 @@ import Router from 'vue-router'
 // import HelloWorld from '@/components/HelloWorld'
 import StarNotes from '@/components/StarNotes'
 import StarBanner from '@/components/starBanner/StarBanner'
+import StarLogin from '@/components/login/StarLogin'
+import StarRegister from '@/components/register/StarRegister'
 
 Vue.use(Router)
 
@@ -23,6 +25,22 @@ export default new Router({
       meta: {
         title: '欢迎'
       }
+    },
+    {
+      path: '/StarLogin',
+      name: 'StarLogin',
+      component: StarLogin,
+      meta: {
+        title: '登入'
+      }
+    },
+    {
+      path: '/StarRegister',
+      name: 'StarRegister',
+      component: StarRegister,
+      meta: {
+        title: '注册'
+      },
     }
   ]
 })
