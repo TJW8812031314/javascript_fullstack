@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>flatten-array展平数组</title>
+</head>
+<body>
+  <script>
+    // [1, 2, 3, 4]
+    var arr = [1, [2, [3, 4]]]
+    var farr = [].concat(arr[0]).concat(arr[1])
+    console.log(farr)
+    // 1 [2, [3, 4]] -> [1, 2, [3, 4]]
+
+    // 递归
+    // function flattenArr (arr) {
+    //   // 判断是否是数组
+    //   let result = []
+    //   for (let i = 0; i < arr.length; i++) {
+    //     if (Array.isArray(arr[i])) {
+    //       // result.concat(arr[i])
+    //       result = result.concat(flattenArr(arr[i]))
+    //     }else {
+    //       result.push(arr[i])
+    //     }
+    //   }
+    //   return result
+    // }
+    console.log(flattenArr([1, [2, [3, 4]]]))
+
+    // reduce map filter 函数式编程
+    function flattenArr(arr) {
+      return arr.reduce((pre, next) => {
+        console.log(pre, next)
+        if(Array.isArray(next)) {
+          console.log(pre, next)
+          return pre.concat(flattenArr(next))
+        } else {
+          pre.push(next);
+          return pre;
+        }
+      }, [])
+    }
+    // let arr = [0, 2, 4, 5]
+    // // 求和
+    // arr.reduce((pre, next) => pre + next, 0)
+  </script>
+</body>
+</html>
