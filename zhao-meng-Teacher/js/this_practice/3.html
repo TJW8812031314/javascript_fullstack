@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>new this</title>
+</head>
+<body>
+  <script>
+    this.a = 20   // 30
+    function Go() {
+      // 1. 生成{}
+      // 2. 继承 {} ._proto_ = Go.prototype
+      // Go.prototype._proto_ = Object.prototype
+      // new后 this === 实例
+      console.log(this.a);
+      // 3. 赋值 属性
+      this.a = 30    // 
+      // 4. return {
+    //       a: 30,
+    //       _proto_: {
+    //         a: 40,
+    //          _proto: {
+    //           _proto_: {}
+    //          }
+    //       }
+    //   }
+    }
+    Go.prototype.a = 40
+    var test = {
+      a: 50,
+      init: function (fn) {
+        fn() 
+        console.log(this.a)
+        return fn
+      }
+    }
+    // 1题
+    // let p = new Go();
+    console.log(new Go().a)// 30
+    // 2题
+    test.init(Go) // 20 50
+    // 3题
+    var p = test.init(Go); // 30 50
+    // 4题
+    p()// 30
+  </script>
+</body>
+</html>

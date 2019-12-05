@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>this</title>
+</head>
+<body>
+  <iframe src="www.baidu.com" frameborder="0"></iframe>
+  <iframe src="" frameborder="0"></iframe>
+  <script>
+    function fn () {
+      console.log(this.length)// 2 true 2 2
+    }
+    // 1题
+    fn();  // window.length iframe 节点的个数
+
+    var bar = {
+      length: 5,
+      fn1: function() {
+        console.log(this === bar1)// true
+        fn(); // window
+        // 每一个 普通函数都可以用的一个对象
+        // 所有的参数
+        arguments[0]()
+        /**
+        {
+          0: fn
+          1: 1234
+          length: 2
+        }
+          */
+      }
+    }
+    var bar1 = {length: 6}
+    // bind 返回绑定好 this  的函数
+    const res = bar.fn1.bind(bar1);
+    // bind绑定fn1的this， 指向的window
+    // 2题
+    res(fn, 12345) // 2 2
+    // obj.fn < call/apply/bind < new
+
+
+    foo(1, 2, 3)
+    function foo() {
+      // 类数组对象
+      // 1: arguments[0] arguments[1]
+      // 2: length属性
+      // 类数组没有数组的方法
+      console.log(arguments)
+      // * 2
+      // map
+
+      //1. 类数组 -> 真数组 Array.from()
+      let arr1 = Array.from(arguments)
+
+      //2. 借用数组的slice 方法
+      let arr2 = Array.prototype.slice.call(arguments)
+      console.log(typeof arguments.map) //undefined
+
+      //3. 解构出来然后再放入一个数组中
+      let arr3 = [...arguments]
+
+    }
+    const nodes = document.querySelectorAll('iframe')
+    console.log(nodes)
+
+
+    function Person(age) {
+      this.age = age
+    }
+    Person.prototype.reduceAge = function () {
+      return this.age - 10
+    }
+    var p = new Person(20)
+    console.log(p.reduceAge())
+    // [].slice
+    var p2 = {age: 30}
+    console.log(Person.prototype.slice.call(p2))
+  </script>
+</body>
+</html>
