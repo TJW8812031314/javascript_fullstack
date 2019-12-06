@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>new</title>
+</head>
+<body>
+  <script>
+    function Person() {
+      this.age = 30
+      this.name = name
+      return {a: 1, b: 2, c: 3, d: 4}
+    }
+    Person.prototype.say = () =>{
+      console.log('say')
+    }
+    var s = new Person()
+    console.log(s)
+    
+    // 实现new的过程
+    function myNew(constructor, ...args) {
+      // 1
+      var obj = {}
+      // 2
+      let ret = constructor.apply(obj, args)
+      // 3
+      obj._proto_ = constructor.prototype
+      // 4 注意构造函数返回值
+      return typeof ret === 'object' ? ret : obj
+    }
+    var s1 = myNew(Person, 4)
+    console.log(s1)
+
+    // call的实现
+    function myCall(fn, obj) {
+      obj._fn_ = fn
+      // 注意返回值
+      let ret  = obj._fn_()
+      // obj._fn_()
+      delete obj._fn_
+      return ret
+    }
+    var obj = {abc: 50}
+    // obj.fn()
+    function fn() {
+      console.log(this.abc)
+      return true
+    }
+  console.log(myCall(fn, obj))
+  </script>
+</body>
+</html>
