@@ -64,11 +64,17 @@ let findNoteListBytype = function (note_type) {
   return allServices.query(_sql)
 }
 
+// 根据对应的id查找对应的笔记详情
+let findNoteDetailById = function (id) {
+  let _sql = `select * from note where id="${id}"`
+  return allServices.query(_sql)
+}
 
 module.exports = {
   getAllusers,
   userLogin,
   findUser,
   insertUser,
-  findNoteListBytype
+  findNoteListBytype,
+  findNoteDetailById
 }

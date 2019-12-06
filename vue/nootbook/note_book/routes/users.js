@@ -146,4 +146,33 @@ router.post('/findNoteListBytype', async(ctx, next) => {
     }
   })
 })
+
+// 根据对应的id查找对应的笔记详情
+router.post('/findNoteDetailById', async(ctx, next) => {
+  let id = ctx.request.body.id
+  await userServies.findNoteDetailById(id).then(async (res) => {
+    let r = ''
+    if(res.length) {
+      r = 'ok',
+      ctx.body = {
+        code: 200,
+        data: res[0],
+        mess: '查找成功'
+      }
+    }else {
+      r = 'error',
+      ctx.body = {
+        code: 400,
+        data: r,
+        mess: '查找失败'
+      }
+    }
+  })
+  .catch((error) => {
+    ctx.body = {
+      code: "80000",
+      data: error
+    }
+  })
+})
 module.exports = router

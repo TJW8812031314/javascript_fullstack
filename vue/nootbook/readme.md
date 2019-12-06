@@ -14,5 +14,7 @@ show databases；
 创建一个库
 create database test;
 use test
-C:/javascript_fullstack/woniu-Teacher/node-fs/nootbook/test.sql
+C:/javascript_fullstack/vue/nootbook/test.sql
+
+npm i vue-quill-editor -S 生产环境安装富文本编辑器
 
