@@ -1,18 +1,18 @@
 <template>
-  <div class="publish-note">1223
+  <div class="publish-note">
     <v-editor
     v-model="content"
     ref="myQuillEditor"
-    :option="editorOption"
-    @plur="onEditorBlur($event)"
+    :options="editorOption"
+    @blur="onEditorBlur($event)"
     @focus="onEditorFocus($event)"
     @change="onEditorChange($event)"
     >
     </v-editor>
     <div class="note-wrap">
-      <div class="note title">
+      <div class="note-title">
         <h2>输入标题</h2>
-        <van-field v-model="value" placeholder="请输入用户名" />
+        <van-field v-model="title" placeholder="请输入标题笔记"></van-field>
       </div>
       <div class="note-title">
         <h2>上传图片</h2>
@@ -24,7 +24,7 @@
       </div>
       <div class="note-title">
         <h2>请选择分类</h2>
-        <span class="note-type" @click="seleType">选择分类 &gt;{{selectCon}}</span>
+        <span class="note-type" @click="selectType">选择分类 &gt;{{selectCon}}</span>
         <van-action-sheet 
         v-model="show" 
         :actions="actions" 
@@ -33,7 +33,7 @@
         @cancel="onCancel"
         />
       </div>
-      <div class="publish-btn">发布笔记</div>
+      <div class="publish-btn" @click="publish">发布笔记</div>
     </div>
   </div>
 </template>
@@ -70,7 +70,6 @@ export default {
           ]
         }
       },
-      value: '',
       preImg: '',
       title: '',
       selectCon: '',
@@ -105,7 +104,13 @@ export default {
     onEditorBlur (){},
     onEditorFocus () {},
     onEditorChange () {},
-    onRead () {},
+
+    // 图片
+    onRead (file) {
+      console.log(file)
+      this.preImg = file.content
+    },
+    // 分类
     onSelect (item) {
       console.log(item)
       this.selectCon = item.subname
@@ -114,8 +119,31 @@ export default {
     onCancel () {
       this.show = false
     },
-    seleType () {
+    selectType () {
       this.show = true
+    },
+    publish () {
+      let userAll = JSON.parse(sessionStorage.userInfo)
+      console.log(userAll.nickname)
+      this.$http({
+        method: 'post',
+        url: 'http://localhost:3000/users/insertNote',
+        data: {
+          note_content: this.content,
+          title: this.title,
+          note_type: this.selectCon,
+          head_img: this.preImg,
+          useId: userAll.id,
+          nickname: userAll.nickname
+        }
+      })
+      .then((res) => {
+        console.log(res)
+        this.$toast(res.data.mess)
+        // setTimeout(() => {
+        //   this.$router.push({path:'/noteClass'})
+        // }, 1000)
+      })
     }
   }
 }

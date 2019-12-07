@@ -6,7 +6,7 @@
           <van-icon name="wap-nav" size="20px"></van-icon>
           </div>
         <div>
-          <van-icon name="like" size="20px"></van-icon>
+          <van-icon name="like" size="20px" @click="open"></van-icon>
           <van-icon name="search" size="20px"></van-icon>
         </div>
       </header>
@@ -86,8 +86,12 @@ export default {
     //传实参 拼接路径
     noteList (title) {
       this.$router.push({path: '/noteList', query:{'title': title}})
+    },
+    open () {
+      this.$router.push({path: '/PublishNote'})
     }
   }
+  
 }
 </script>
 
