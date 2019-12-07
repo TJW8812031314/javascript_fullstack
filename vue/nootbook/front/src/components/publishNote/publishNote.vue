@@ -140,9 +140,9 @@ export default {
       .then((res) => {
         console.log(res)
         this.$toast(res.data.mess)
-        // setTimeout(() => {
-        //   this.$router.push({path:'/noteClass'})
-        // }, 1000)
+        setTimeout(() => {
+          this.$router.push({path:'/noteClass'})
+        }, 1000)
       })
     }
   }
