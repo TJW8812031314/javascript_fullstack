@@ -1,4 +1,4 @@
-# vue-compontnts
+# vue-migu-reading
 
 > A Vue.js project
 
@@ -19,8 +19,4 @@ npm run build --report
 ```
 
 For a detailed explanation on how things work, check out the [guide](http://vuejs-templates.github.io/webpack/) and [docs for vue-loader](http://vuejs.github.io/vue-loader).
-
-## provide  inject
-缺点：
-1. 数据查询不方便
-2. 数据不具有响应式
+大概参照： http://wap.cmread.com/r/p/index.jsp
