@@ -24,3 +24,15 @@ For a detailed explanation on how things work, check out the [guide](http://vuej
 缺点：
 1. 数据查询不方便
 2. 数据不具有响应式
+## input 框失焦
+form文件夹
+## 手写全局loading
+plugin文件夹
+## 动态渲染vue模板
+display文件夹
+```js
+const sum = new Function ('a', 'b', 'return a + b')
+sum 
+(function anonymous(a,b) {
+return a + b
+})

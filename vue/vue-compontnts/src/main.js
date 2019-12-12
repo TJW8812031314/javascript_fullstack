@@ -5,6 +5,11 @@ import App from './App'
 import router from './router'
 
 Vue.config.productionTip = false
+import { format } from 'path'
+
+import {Toast} from '@/components/plugin'
+
+Vue.use(Toast)
 
 /* eslint-disable no-new */
 new Vue({
