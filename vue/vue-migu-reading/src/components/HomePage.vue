@@ -14,52 +14,60 @@
           <span class="search">
             <img src="../assets/images/soushuo (1).png" alt="" width="28" height="28">
           </span>
-          <span class="bookshelf">
+          <span class="bookshelf" @click="goBookshelf">
             <img src="../assets/images/jiarushujia.png" alt="" width="40" height="45">
           </span>
         </div>
       </div>
     </div>
-    <div class="top-nav-list">
-      <div class="item">
-        <span class="title"></span>
-        <img src="" alt="">
+    <div class="border"></div>
+    <div class="nav-list">
+      <div class="list-item">
+        <img src="../assets/images/paihang.png" alt="" width="40" height="40">
+        <h3>排行</h3>
       </div>
-      <div class="item">
-        <span class="title"></span>
-        <img src="" alt="">
+      <div class="list-item">
+        <img src="../assets/images/nansheng.png" alt="" width="40" height="40">
+        <h3>男生</h3>
       </div>
-      <div class="item">
-        <span class="title"></span>
-        <img src="" alt="">
+      <div class="list-item">
+        <img src="../assets/images/nvsheng.png" alt="" width="45" height="45">
+        <h3>女生</h3>
       </div>
-    </div>
-    <div class="top-nav-list">
-      <div class="item">
-        <span class="title"></span>
-        <img src="" alt="">
+      <div class="list-item">
+        <img src="../assets/images/fenlei.png" alt="" width="45" height="45">
+        <h3>分类</h3>
       </div>
-      <div class="item">
-        <span class="title"></span>
-        <img src="" alt="">
-      </div>
-      <div class="item">
-        <span class="title"></span>
-        <img src="" alt="">
+      <div class="list-item">
+        <img src="../assets/images/shujia.png" alt="" width="48" height="48">
+        <h3>书单</h3>
       </div>
     </div>
   </div>
+
 </template>
 
 <script>
 export default {
+  name: 'HomePage',
+  data () {
+   return {
 
+   }
+  },
+  methods: {
+    goBookshelf () {
+      this.$router.push({path: '/bookShelf'})
+    }
+  }
 }
 </script>
 
 <style scoped>
 .home-page {
+  position: relative;
   width: 100%;
+
 }
 .header {
   width: 100%;
@@ -73,7 +81,7 @@ export default {
   position: relative;
   height: 63px;
   line-height: 63px;
-  background: #66aff3;
+  background: #00CCFF;
 }
 .header-left {
   position: relative;
@@ -98,6 +106,7 @@ export default {
   position: relative;
   word-wrap: 25%;
   margin-left: 20px;
+  opacity: 0.8;
 }
 .header-shuqi{
   display: flex;
@@ -142,4 +151,39 @@ h1 {
   line-height: 49px;
   margin: 5px 10px
 }
+.border {
+  border-top: 1px solid #F0F0F0;
+  height: 14px;
+  border-bottom: 1px solid #F0F0F0;
+  background-color: #C0C0C0;
+}
+.nav-list {
+  width: 100%;
+  height: 95px;
+  line-height: 95px;
+  text-align: center;
+  background-color: #FF6699;
+  border-bottom: 1px solid #FFFF99;
+  opacity: .8;
+}
+.list-item {
+  display: inline-block;
+
+  height: 67px;
+  text-align: center;
+  margin: 5px 10px;
+  border-radius: 2px;
+  /* border-radius: 40%; */
+  box-sizing: border-box;
+  overflow: hidden;
+}
+h3 {
+  position: absolute;
+  top: 110px;
+  font-size: 13px;
+  text-align: center;
+  margin-left: 12px;
+  
+}
+
 </style>
