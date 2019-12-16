@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>函数式bind接收参数</title>
+</head>
+<body>
+  <script>
+    Function.prototype.myBind = function(oThis, ...aArgs) {
+      //sum
+      // console.log(this === sum) this指向sum
+      // 先获取要绑定的函数
+      var fToBind = this;
+      // fToBind 有 prototype
+      var fBound = function(...bArgs) {
+        // 拿到所有参数
+        // 绑定 this 没有优先级
+        // 如果被 new 调用 this 指向 new 实例
+        // 否则 就是 第一个参数 oThis
+        // 判断是否new调用
+        let isNew = this instanceof fBound
+        return fToBind.apply(isNew ? this : oThis,  aArgs.concat(bArgs))
+        // return fToBind.apply(oThis, aArgs.concat(bArgs));
+      }
+      // fBound 没有 prototype
+      // 继承一下
+      fBound.prototype = Object.create(this.prototype)
+      return fBound;
+    }
+    function sum(a, b, c) {
+      // this.a = 789
+      return a + b + c;
+    }
+    sum.prototype.abc = function() {}
+    let obj = {}
+
+    // 第一步调用
+    var a = sum.myBind(null, 1);
+    // 第二步调用
+
+    // 判断this的优先级new
+    console.log('原型对象', a.prototype.abc)
+    console.log(a(2, 3));
+    // let c = new a()
+    // console.log(obj)
+  </script>
+</body>
+</html>

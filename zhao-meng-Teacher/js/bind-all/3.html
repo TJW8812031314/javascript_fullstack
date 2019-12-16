@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>bind实现</title>
+</head>
+<body>
+  <script>
+    // slice
+    // Array.prototype.slice
+    Function.prototype.myBind = function(oThis, ...aArgs) {
+      //sum
+      // console.log(this === sum) this指向sum
+      // 先获取要绑定的函数
+      var fToBind = this
+      var fBound = function() {
+        // call apply
+        fToBind.apply(oThis)
+      }
+      return fBound
+    }
+    function sum(a,  b, c) {
+
+      return a + b + c
+    }  
+    // 第一步调用 fToBind先把sum接收掉
+    var a = sum.myBind(null, 1)
+    // 第二步调用 fToBind处在 fBound()方法
+    a(2, 3)
+    console.log(a)
+
+
+    // 谁调用this指向谁
+    function Foo() {
+
+    }
+    Foo.prototype.say = function () {
+      console.log(this === f)
+    }
+    var f = new Foo()
+    f.say()
+  </script>
+</body>
+</html>
