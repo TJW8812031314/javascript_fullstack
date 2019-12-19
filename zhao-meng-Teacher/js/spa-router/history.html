@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    // ['baidu.com', 'biadu.com/1', 'baidu.com/2']  
+    // 第一参数{} 2标题 3. url
+    //redireact
+    // ['/a', '/preson', '/login']
+    // ['/a', '/login]// 替换
+    //1
+    const backup = history.pushState
+    //2
+    history.pushState = function(...args) {
+      console.log('我知道url变了')
+      //3
+      backup.call(this, ...args)
+    }
+
+    history.pushState({}, '', '/url1')
+    history.pushState({}, '', '/url2')
+    history.pushState({}, '', '/url3')
+    history.go(-2)
+    // 前进一步
+    history.forward()
+    history,back()
+    // 替换记录
+    history.replaceState({}, '', '/url0')
+    setTimeout(() => {
+      history.pushState({}, '', '/url4')
+    }, 3000)
+
+    //1
+    const backPush = Array.prototype.push
+    // 2
+    Array.prototype.push = function(...args) {
+      console.log('我知道数组变了')
+      backPush.apply(this, ...args)
+    }
+  </script>
+</body>
+</html>

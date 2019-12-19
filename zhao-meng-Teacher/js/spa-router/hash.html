@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    * {
+      margin: 0; padding: 0;
+    }
+    html,
+    body {
+      scroll-behavior: smooth;
+    }
+    .box {
+      height: 1000px;
+      background-color: aqua;
+    }
+  </style>
+</head>
+<body>
+  <!-- 锚点 -->
+  <a id="top"></a>
+  <div class="box pink"></div>
+  <a href="#top">回到顶部</a>
+  <!-- file:///C:/javascript_fullstack/zhao-meng-Teacher/js/spa-router/hash.html#top -->
+  <script>
+    window.onhashchange = function () {
+      console.log('render')
+    }
+  </script>
+</body>
+</html>
