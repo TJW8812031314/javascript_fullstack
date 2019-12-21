@@ -9,6 +9,7 @@
 # src 存放入口文件
 
 # webpack.config.js // webpack的配置文件
+- sourceMap 文件内容出处方便调试
 
 - webpack中的 常用模块(module) 用来如何处理项目中的不同类型模块
 
@@ -25,4 +26,24 @@ autoprefixer 进行浏览器的部分兼容补全
 
 # 抽取样式将css单独打包
   npm i mini-css-extract-plugin --save-dev
+
+# 压缩打包
+ - 压缩css(optimize-css-assets-webpack-plugin)
+ - 压缩 js (uglifyjs-webpack-plugin)
+
+# 为css js文件添加hash值， 防止缓存
+
+# html打包
+ - html-webpack-plugin
+
+# 清理目录
+ - clean-webpack-plugin
+
+# webpack处理图片和优化
+ - file-loader
+ - image-webpack-loader
+
+
+https://github.com/tcoopman/image-webpack-loader
+
 
