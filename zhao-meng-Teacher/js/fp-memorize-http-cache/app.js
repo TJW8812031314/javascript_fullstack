@@ -1,6 +1,7 @@
 var Koa = require('koa');
 var Router = require('koa-router');
-var koaStatic = require('koa-static')
+// var koaStatic = require('koa-static')
+const md5 = require('md5')
  
 var app = new Koa();
 var router = new Router();
@@ -28,14 +29,30 @@ router.get('/', (ctx, next) => {
 </html>
   `
 });
- router.get('/app1.js', async(ctx) => {
-   console.log('app.js 请求')
-   const fs = require('fs')
-   const content = fs.readFileSync('./app1.js', 'utf8')
-   const time = Date.now() + 1000 * 30; // 30s
-   ctx.set('cache-control', 'public,max-age=30')
-   ctx.body = content
- })
+router.get('/app1.js', async(ctx) => {
+  console.log('app.js 请求')
+  const fs = require('fs')
+  const content = fs.readFileSync('./app1.js', 'utf8')
+  const stat = fs.statSync('./app1.js')
+  const etag = md5(content)
+  const time = Date.now() + 1000 * 30; // 30s
+  //
+  if(ctx.req.headers['if-none-match'] === etag) {
+    ctx.status = 304
+    ctx.body = ''
+    return
+  }
+
+  if(ctx.req.headers['if-modified-since'] === stat.mtime) {
+    ctx.status = 304
+    ctx.body = ''
+    return
+  }
+  ctx.set('cache-control', 'public,max-age=30')
+  ctx.set('ETag', etag)
+  ctx.set('Last-Modified', stat.mtime)
+  ctx.body = content
+})
 app
   .use(router.routes())
   .use(router.allowedMethods());
