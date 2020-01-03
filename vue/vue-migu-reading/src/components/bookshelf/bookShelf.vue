@@ -11,6 +11,7 @@
         <img src="http://c-shuqi.11222.cn/assets/bookshelf-empty_0f8e62c.png" alt="" width="167" height="93">
       </div>
       <p>书架空空如也</p>
+      <button class="btn">去书城</button>
     </div>
   </div>
 </template>
@@ -52,6 +53,23 @@ export default {
   color: #A8A8A8;
 }
 .bookshelf-content {
-  align-items: center;
+  position: relative;
+  top: 50px;
+  height: 50%;
+  width: 100%;
+  padding: 40px 0;
+}
+.book {
+  position: relative;
+  text-align: center;
+  justify-content: center;
+}
+p {
+  text-align: center;
+  margin-top: 16px;
+  font-size: 12px;
+}
+.btn {
+  
 }
 </style>
