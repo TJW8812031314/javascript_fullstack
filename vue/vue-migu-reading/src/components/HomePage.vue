@@ -57,7 +57,7 @@ export default {
   },
   methods: {
     goBookshelf () {
-      this.$router.push({path: '/bookShelf'})
+      this.$router.push({path: '/BookShelf'})
     }
   }
 }
