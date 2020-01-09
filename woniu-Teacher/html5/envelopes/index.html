@@ -5,8 +5,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Document</title>
-  <!-- <script type="text/javascript" src="js/jquery1.9.1/jquery-1.9.1.js" ></script>
-  <script type="text/javascript" src="js/jqueryStudy.js" ></script> -->
   <style>
     .btn {
       background-color: orange;
@@ -59,10 +57,15 @@
 <div class="btn rotate">開</div>
 <view class="btn rotate">開</view>
 <script>
-$("btn").bind('click', () => {
-  
-})
-
+  let btn = document.querySelectorAll('.rotate')
+  for(let i = 0; i < btn.length; i++) {
+    btn[i].addEventListener('click', () => {
+      // console.log(e)
+      btn[i].style.animation = "anim 0.6s 6 alternate"
+      
+    })
+    
+  }
 </script>
 </body>
 </html>
