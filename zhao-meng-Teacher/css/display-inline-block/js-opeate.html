@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>运算优先级</title>
+</head>
+<body>
+  <script>
+    function Foo() {
+      // 不加const var let Foo调用之后就会加入全局
+      getName = function( ){
+        console.log(1)
+      }
+      return this
+    }
+
+    Foo.getName = function() {
+      console.log(2)
+    }
+
+    Foo.prototype.getName = function() {
+      console.log(3)
+    }
+    // 只提升声明赋值在原地
+    var getName = function () {
+      console.log(4)
+    }
+    // 变量提升
+    function getName() {
+      console.log(5)
+    }
+
+    // 题
+    Foo.getName();// 2
+    getName()// 4
+    Foo().getName()// 1
+    getName()// 5 x 1
+
+    // .19
+    // new 无参数列表 18
+    new Foo.getName()// 3 x 2
+
+    // new有参数列表 19  
+    // .19
+    new Foo().getName()// 1 x 3
+    new new Foo().getName()// 3
+    // 同上 (new (new Foo().getName)())
+
+  </script>
+</body>
+</html>
