@@ -62,9 +62,11 @@
     btn[i].addEventListener('click', () => {
       // console.log(e)
       btn[i].style.animation = "anim 0.6s 6 alternate"
-      
     })
-    
+    btn[i].addEventListener('animationend', () => {
+      // console.log(e)
+      btn[i].style.animation = "anim 0.6s 6 alternate"
+    })
   }
 </script>
 </body>
