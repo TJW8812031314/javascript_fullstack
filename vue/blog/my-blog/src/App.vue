@@ -1,22 +1,37 @@
 <template>
   <div id="app">
-    <Nav></Nav>
-    <router-view />
+    <Nav v-if="isShowNav"></Nav>
+    <div class="layout">
+      <router-view />
+      <Slider></Slider>
+    </div>
   </div>
 </template>
 
 <script lang="ts">
-import {Vue, Component} from 'vue-property-decorator'
+import {Vue, Component, Watch } from 'vue-property-decorator'
 import Nav from '@/components/Nav.vue'
+import Slider from '@/components/Slider.vue'
+import { watch } from 'fs'
 
 @Component({
   components: {
-    Nav
+    Nav,
+    Slider
   }
 })
  
 export default class App extends Vue {
+  private isShowNav: boolean = true
 
+  @Watch("$router")
+  routerChange(val, oldVal) {
+    if (val.path === '/') {
+      this.isShowNav = false
+    }else {
+      this.isShowNav === true
+    }
+  }
 }
 
 </script>
@@ -28,6 +43,16 @@ export default class App extends Vue {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
+  padding-top: 61px;
+}
+
+.layout {
+  display: flex;
+  justify-content: space-around;
+}
+
+.slide {
+  flex: 0 0 300px;
 }
 
 #nav {
