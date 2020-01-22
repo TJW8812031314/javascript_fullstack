@@ -6,6 +6,29 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Document</title>
   <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+    .content {
+      height: 300px;
+      width: 150px;
+      background-color: red;
+      position: relative;
+      top: 50%;
+      left: 50%;
+      transform: translateX(-50%);
+      border-radius: 6px;
+      z-index: 10;
+    }
+    .Triangle {
+      position: relative;
+      height: 120px;
+      width: 148px;
+      border: 1px solid;
+      border-radius: 6px 6px 50% 50%;
+      overflow: hidden;
+    }
     .btn {
       background-color: orange;
       border: 5px solid red;
@@ -21,8 +44,8 @@
       position: absolute;
       left: 50%;
       top: 50%;
-      margin-left: -23px;
-      margin-top: -23px;
+      margin-left: -27px;
+      margin-top: -10px;
     }
     
     .rotate { 
@@ -50,23 +73,94 @@
         transform: rotateY(360deg);
       }
     }
+    @-webkit-keyframes ctc {
+      /* 0% {
+        -webkit-transform: rotateX(60deg);
+      }
+    
+      50% {
+        -webkit-transform: rotateX(90deg);      
+      }
+      70% {
+        -webkit-transform: rotateX(120deg);      
+      }
+      100% {
+        -webkit-transform: rotateX(180deg);      
+
+      } */
+      from {
+        transform: rotateX(0deg);
+      }
+    
+      to {
+        transform: rotateX(180deg);
+      }
+    }
+    .clickContent {
+      position: absolute;
+      top: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      height: 300px;
+      width: 150px;
+      background-color: red;
+      text-align: center;
+      float: left;
+    }
+    .wappr {
+      overflow: hidden;
+      
+    }
   </style>
 </head>
 <body>
-  
-<div class="btn rotate">開</div>
-<view class="btn rotate">開</view>
+  <a href="https://www.baidu.com">六合彩</a>
+
+  <div class="content">
+    <div class="Triangle"></div>
+    <div class="btn rotate">開</div>
+    <!-- <view class="btn rotate">開</view> -->
+  </div>
+  <div class="wappr">
+    <div class="clickContent">
+      <h3>恭喜发财</h3>
+    </div>
+  </div>
+
 <script>
   let btn = document.querySelectorAll('.rotate')
+  let content = document.querySelector('.content')
+  let Triangle = document.querySelector(".Triangle")
+  Triangle.addEventListener('click', () => {
+    Triangle.style.animation = "ctc 2s ease-in-out"
+  })
+
   for(let i = 0; i < btn.length; i++) {
     btn[i].addEventListener('click', () => {
       // console.log(e)
-      btn[i].style.animation = "anim 0.6s 6 alternate"
+      btn[i].style.animation = "anim 0.6s 4 alternate"
+      
     })
-    btn[i].addEventListener('animationend', () => {
-      // console.log(e)
-      btn[i].style.animation = "anim 0.6s 6 alternate"
+    btn[i].addEventListener('animationend', (e) => {
+      console.log("动画结束")
+      
+
+      // Triangle.style.animation = "ctc 2s ease-in-out;"
+      // Triangle.addEventListener('animationend', (e) => {
+      //   console.log('再次动画')
+      //   content.style.display = "none"
+
+      // })
+      // if(this.sum === false) {
+      //   btn[i].addEventListener('click', () => {
+      //     console.log(123)
+      //     btn[i].style.animation = "anim 0.6s 6 alternate"
+          
+      //   })
+      // }
+      
     })
+
   }
 </script>
 </body>
