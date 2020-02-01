@@ -4,8 +4,7 @@
     "pages/topic/main",
     "pages/category/main",
     "pages/cart/main",
-    "pages/my/main",
-    "pages/counter/main"
+    "pages/my/main"
   ],
   "window": {
     "backgroundTextStyle": "light",
@@ -16,18 +15,17 @@
   "tabBar": {
     "color": "#666",
     "backgroundColor": "#fafafa",
-    "selectedColor": "#b42B2d",
+    "selectedColor": "#b4282d",
     "borderStyle": "white",
-
     "list": [
       {
-        "pagePath": "pages/topic/main",
+        "pagePath": "pages/index/main",
         "iconPath": "static/images/ic_menu_choice_nor.png",
         "selectedIconPath": "static/images/ic_menu_choice_pressed.png",
         "text": "首页"
       },
       {
-        "pagePath": "pages/index/main",
+        "pagePath": "pages/topic/main",
         "iconPath": "static/images/ic_menu_topic_nor.png",
         "selectedIconPath": "static/images/ic_menu_topic_pressed.png",
         "text": "专题"
@@ -52,5 +50,6 @@
       }
     ],
     "position": "bottom"
-  }
+  },
+  "sitemapLocation": "sitemap27.json"
 }
