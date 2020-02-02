@@ -1,10 +1,10 @@
 {
   "pages": [
     "pages/index/main",
-    "pages/topic/main",
-    "pages/category/main",
-    "pages/cart/main",
-    "pages/my/main"
+    "pages/topic/main.js",
+    "pages/category/main.js",
+    "pages/cart/main.js",
+    "pages/my/main.js"
   ],
   "window": {
     "backgroundTextStyle": "light",
@@ -50,6 +50,7 @@
       }
     ],
     "position": "bottom"
-  },
-  "sitemapLocation": "sitemap27.json"
+  }
 }
+
+ 
