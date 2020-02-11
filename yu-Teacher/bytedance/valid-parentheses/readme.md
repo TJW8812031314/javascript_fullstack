@@ -34,3 +34,11 @@ leetcode  20
   学习算法， 有没有专门思考或训练 esay-hard
   时间复杂度， 空间复杂度
   有水分 自然成长 刚度
+
+  - 最后
+  能再优化吗？  存下标， 时间复杂度o(n) 不太可能再减
+  空间复杂度 ？ stack o(n) -> o(1) 不能定义
+  left right o(1)
+  1. () 2*right  max
+  2. left < right ()) 有效匹配结束了  left = right = 0
+
