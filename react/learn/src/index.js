@@ -1,6 +1,11 @@
 //入口文件
 import React from 'react'
 import ReactDOM from 'react-dom'
+import Lifecycle from './components/Lifecycle'
+import CommentVs from './components/CommentVs'
+import PureComponentTest from './components/PureComponentTest'
+// import 
+
 // import App from './App'
 
 // class App extends React.Component {
@@ -153,4 +158,7 @@ class TodoList extends React.Component {
 // }
 
 // ReactDOM.render(<React16/>, document.querySelector('#root'))
-ReactDOM.render(<TodoList/>, document.querySelector('#root'))
+// ReactDOM.render(<Lifecycle prop="蜗牛"/>, document.querySelector('#root'))
+// ReactDOM.render(<CommentVs/>, document.querySelector('#root'))
+
+ReactDOM.render(<PureComponentTest body='vue is veart good' author='liuyuxi'/>, document.querySelector('#root'))
