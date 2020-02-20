@@ -25,7 +25,7 @@ class PureComponentTest extends Component {
   render () {
     return (
       <div>
-        {this.state.comme=nts.map((c, i) => (
+        {this.state.comments.map((c, i) => (
           <Comment key={i} data={c}/>
         ))}
       </div>
