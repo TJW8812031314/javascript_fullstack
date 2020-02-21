@@ -39,14 +39,24 @@ class Inner extends Component {
     )
   }
 }
+
+@withProvider //
 class ContextSample extends Component {
   render() {
     console.log('ContextSample')
     return (
       <div>
         <Inner></Inner>
+        {/* <C></C> */}
       </div>
     )
   }
 }
-export default 
+
+// class C extends Component {
+//   render () {
+
+//   }
+// }
+
+export default ContextSample
