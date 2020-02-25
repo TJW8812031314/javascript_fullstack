@@ -1,8 +1,8 @@
-const app = new(require('koa'))()
+// const app = new(require('koa'))()
+// const { initRouter } = require('./lm-loader')
+// app.use(initRouter().routes())
+// app.listen(3000)
 
-const { initRouter } = require('./lm-loader')
-app.use(initRouter().routes())
-
-app.listen(3000)
-// const app = require('koa')
-// const koa = new koa()
+const lm = require('./lm')
+const app = new lm()
+app.start(3000)
