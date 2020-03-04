@@ -9,3 +9,5 @@ higher order Component
 1. 防止重复的代码
 2. 条件渲染， 控制组件的渲染逻辑(渲染劫持)
 3. 捕获|劫持被处理的生命周期
+
+npm i @babel/plugin-proposal-decorators

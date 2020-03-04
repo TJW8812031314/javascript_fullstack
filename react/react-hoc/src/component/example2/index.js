@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 
 // Hoc高阶组件
-function Hoc(wrappedComponent) {
+function HOC(WrappedComponent) {
   return class extends Component {
     constructor (props) {
       super(props)
@@ -9,18 +9,35 @@ function Hoc(wrappedComponent) {
         name: ''
       }
     }
+    onChange = (event) => {
+      // this.setState在这里！！！是异步的
+      this.setState({
+        name: event.target.value
+      })
+      console.log(this.state.name)
+    }
+
     render () {
+      const newProps = {
+        name: {
+          value: this.state.name,
+          onChange: this.onChange
+        }
+      }
       return (
-        <wrappedComponent/>
+        <WrappedComponent {...newProps}/>
       )
     }
   }
 }
 
+//使用
+// Hoc(Example)
+@HOC
 class Example extends Component {
   render () {
     return (
-      <input />
+      <input {...this.props.name}/>
     )
   }
 }
