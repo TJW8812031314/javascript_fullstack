@@ -6,11 +6,14 @@ import './index.css';
 // import Demo2 from './component/useEffect/index'
 // import Demo3 from './component/useEffect/makeUnmount'
 // import Demo4 from './component/useReducer/index'
-import Demo5 from './component/useMemo/index'
+// import Demo5 from './component/useMemo/index'
+import Demo6 from './component/useRef/anthorUse'
+
 
 import * as serviceWorker from './serviceWorker';
 
-ReactDOM.render(<Demo5/>, document.getElementById('root'));
+// ReactDOM.render(<App />, document.getElementById('root'));
+ReactDOM.render(<Demo6 />, document.getElementById('root'));
 
 // If you want your app to work offline and load faster, you can change
 // unregister() to register() below. Note this comes with some pitfalls.
