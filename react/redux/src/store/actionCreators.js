@@ -1,5 +1,4 @@
-import { CHABNGE_INPUT_VALUE, ADD_TODO_ITEM, DELETE_TODO_ITEM, INIT_LIST_ACTION } from './actionTypes'
-import axios from 'axios'
+import { CHABNGE_INPUT_VALUE, ADD_TODO_ITEM, DELETE_TODO_ITEM, INIT_LIST_ACTION , GET_INIT_LIST} from './actionTypes'
 export const getInputChangeAction = (value) => ({
   type: CHABNGE_INPUT_VALUE,
   value: value
@@ -16,14 +15,18 @@ export const initListAction = (data) => ({
   data
 })
 
-export const getTodoList = () => {
-  return (dispatch) => {
-    axios.get("http://musicapi.leanapp.cn/comment/music?id=186016&limit=1").then(res => {
-      const data = res.data
-      const action = initListAction(Object.keys(data.hotComments[0]))
-      // store.dispatch(action)
-      // console.log(action)
-      dispatch(action)
-    })
-  }
-}
+export const getInitList = () => ({
+  type: GET_INIT_LIST,
+})
+
+// export const getTodoList = () => {
+//   return (dispatch) => {
+//     axios.get("http://musicapi.leanapp.cn/comment/music?id=186016&limit=1").then(res => {
+//       const data = res.data
+//       const action = initListAction(Object.keys(data.hotComments[0]))
+//       // store.dispatch(action)
+//       // console.log(action)
+//       dispatch(action)
+//     })
+//   }
+// }

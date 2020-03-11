@@ -4,8 +4,10 @@ import React, { Component } from 'react'
 import 'antd/dist/antd.css'
 import store from './store/index.js'
 // import { CHABNGE_INPUT_VALUE, ADD_TODO_ITEM, DELETE_TODO_ITEM } from './store/actionTypes'
-import { getInputChangeAction, getAddItemAction, getDeleteItemAction, getTodoList } from './store/actionCreators'
+import { getInputChangeAction, getAddItemAction, getDeleteItemAction, getInitList } from './store/actionCreators'
 import TodoListUI from './TodoListUi.js'
+// import axios from 'axios'
+
 
 // store 的创建
 
@@ -22,8 +24,12 @@ class TodoList extends Component {
   }
 
   componentDidMount () {
-    const action = getTodoList()
-    store.dispatch(action)// 因为此刻的store已经集成了thunk的功能， 所以支持dispatch一个函数这个函数会自动执行
+    const action = getInitList()
+    store.dispatch(action)
+    // console.log(action)
+    // dispatch(action)
+  
+    // store.dispatch(action)// 因为此刻的store已经集成了thunk的功能， 所以支持dispatch一个函数这个函数会自动执行
 
   }
   handleInputChange (e) {
