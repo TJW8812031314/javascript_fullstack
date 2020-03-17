@@ -3,20 +3,21 @@ import { fromJS } from 'immutable'
 // facebook
 // immutable对象
 const defaultState = fromJS({
-  topicList: [{
-    id: 1,
-    title: '社会焦点',
-    imgUrl: 'https://upload-images.jianshu.io/upload_images/7065556-dfcbaacad4d010e3.jpg?imageMogr2/auto-orient/strip|imageView2/2/w/500/format/webp'
-  },
-  {
-    id: 2,
-    title: '手绘',
-    imgUrl: 'https://upload-images.jianshu.io/upload_images/17559136-4ae8f7d911619005?imageMogr2/auto-orient/strip|imageView2/2/w/1080/format/webp'
-  }
-]
+  topicList: [],
+  articleList: [],
+  recommendList: []
 })
 
 export default (state = defaultState, action) => {
+  switch(action.type) {
+    case 'change_home_data':
+      return state.merge({// 把多个对象合并成一个对象
+        topicList: fromJS(action.topicList),
+        articleList: fromJS(action.articleList),
+        recommendList: fromJS(action.recommendList)
+      })
+    default:
+      return state
 
-  return state
+  }
 }

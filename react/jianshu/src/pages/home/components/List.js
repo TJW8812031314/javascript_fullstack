@@ -1,11 +1,30 @@
 import React, { Component } from 'react'
+import { ListItem, ListInfo } from '../style'
+import { connect } from 'react-redux'
 
 class List extends Component {
 
-  render () {
+  render() {
+    const { list } = this.props
     return (
-      <div>List</div>
+      <div>
+        {
+          list.map((item) => (
+            <ListItem key={item.get('id')}> 
+              <img className="pic" src={item.get('imgUrl')} alt="图片"/>
+              <ListInfo>
+                <h3 className="title" >{item.get('title')}</h3>
+                <p className="desc" >{item.get('desc')}</p>
+              </ListInfo>
+            </ListItem>
+          ))
+        }
+      </div>
     )
   }
 }
-export default List
+const mapState = (state) => ({
+  list: state.home.get('articleList')
+})
+
+export default connect(mapState, null)(List)

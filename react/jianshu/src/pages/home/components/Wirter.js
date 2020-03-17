@@ -1,10 +1,11 @@
 import React, { Component } from 'react'
+import { WirterWrapper } from '../style'
 
 class Wirter extends Component {
 
   render () {
     return (
-      <div>Wirter</div>
+      <WirterWrapper>HelloWroke</WirterWrapper>
     )
   }
 }
