@@ -4,10 +4,13 @@ import { connect } from 'react-redux'
 import { actionCreators } from './store'
 
 class Detail extends Component {
+  
   componentDidMount () {
-    this.props.getDetail()
+    
+    this.props.getDetail(this.props.match.params.id)
   }
   render() {
+    // console.log(this.props.match.params.id)
     return (
       <DetailWrapper>
         <Hearder>{this.props.title}</Hearder>
@@ -22,8 +25,8 @@ const mapState = (state) => ({
 })
 
 const mapDispatch = (dispatch) => ({
-  getDetail() {
-    let action = actionCreators.getDetail()
+  getDetail(id) {
+    let action = actionCreators.getDetail(id)
     action(dispatch)
   }
 })

@@ -2,7 +2,8 @@ import React from 'react'
 import { CSSTransition } from 'react-transition-group'
 import { connect } from 'react-redux'
 import { actionCreators } from './store/index'
-// import { BrowserRouter, Link } from 'react-router-dom'
+import { actionCreators as LoginActionCreators} from '../../pages/login/store/'
+import { Link } from 'react-router-dom'
 import {
   HeaderWrapper,
   Logo,
@@ -15,16 +16,20 @@ import {
 } from './style'
 
 const Header = (props) => {
+  const { login, logout } = props
   return (
     <HeaderWrapper>
-      <Logo />
-      
+      <Logo />     
       <Nav>
         <NavItem className="left">
           <a href='/' className="active">首页</a>
         </NavItem>
         <NavItem className="left">下载App</NavItem>
-        <NavItem className="right">登录</NavItem>
+        {
+          login ? <NavItem onClick={logout} className="right">退出</NavItem> 
+          : <Link to='/login'><NavItem className="right">登录</NavItem></Link> 
+        }
+        
         <NavItem className="right">
           <span className="icon iconfont">&#xe602;</span>
         </NavItem>
@@ -56,7 +61,8 @@ const Header = (props) => {
 
 const mapStateToProps = (state) => {
   return {
-    focused: state.header.get('focused')
+    focused: state.header.get('focused'),
+    login: state.login.get('login')
   }
 }
 // store.dispatch ===> props
@@ -68,6 +74,9 @@ const mapDispatchToProps = (dispatch) => {
 
     bandleInputBlur() {
       dispatch(actionCreators.searchBlur())
+    },
+    logout () {
+      dispatch(LoginActionCreators.logout())
     }
   }
 }
