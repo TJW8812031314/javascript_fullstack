@@ -2,6 +2,7 @@ import React from 'react'
 import { CSSTransition } from 'react-transition-group'
 import { connect } from 'react-redux'
 import { actionCreators } from './store/index'
+// import { BrowserRouter, Link } from 'react-router-dom'
 import {
   HeaderWrapper,
   Logo,
@@ -17,8 +18,11 @@ const Header = (props) => {
   return (
     <HeaderWrapper>
       <Logo />
+      
       <Nav>
-        <NavItem className="left active">首页</NavItem>
+        <NavItem className="left">
+          <a href='/' className="active">首页</a>
+        </NavItem>
         <NavItem className="left">下载App</NavItem>
         <NavItem className="right">登录</NavItem>
         <NavItem className="right">

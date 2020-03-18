@@ -17,7 +17,7 @@ export const HomeLeft = styled.div`
   }
 `;
 export const HomeRight = styled.div`
-  width: 240px;
+  width: 280px;
   float: right;
 `;
 export const TopicWrapper = styled.div`
@@ -79,16 +79,50 @@ export const RecommendWrapper = styled.div`
 export const RecommendItem = styled.div`
   width: 280px;
   height: 50px;
+  margin-bottom: 5px;
   background: url(${(props) => props.imgUrl});
   background-size: contain;
+  border-radius: 4px;
+  cursor: pointer;
 `
 export const WirterWrapper = styled.div`
   width: 278px;
   border: 1px solid #dcdcdc;
   border-radius: 3px;
   height: 300px;
-  line-height: 300;
+  line-height: 300px;
   text-align: center;
+`
+export const CodeItem = styled.div`
+  margin-bottom: 30px;
+  padding: 5px 22px;
+  width: 100%;
+  border: 1px solid #f0f0f0;
+  border-radius: 6px;
+  background-color: #fff;
+  box-sizing: border-box;
+  vertical-align: middle;
+  cursor: pointer;
+  .qrcode {
+    width: 60px;
+    height: 60px;
+    opacity: .85;
+  }
+  .title {
+    position: relative;
+    bottom: 20px;
+    display: inline-block;
+    margin-left: 7px;
+    div {
+      font-size: 15px;
+      color: #333;
+    }
+    p{
+      margin-top: 4px;
+      font-size: 13px;
+      color: #999;
+    }
+  }
 `
 export const LoadMore = styled.div`
   width: 100%;

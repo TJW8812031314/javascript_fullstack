@@ -17,7 +17,6 @@ class Topic extends Component {
             )
           })
         }
-
       </TopicWrapper>
     )
   }
