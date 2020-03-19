@@ -107,6 +107,10 @@ export const CodeItem = styled.div`
     width: 60px;
     height: 60px;
     opacity: .85;
+    :hover {
+      transform: scale(2); 
+      z-index: 100;
+     }
   }
   .title {
     position: relative;

@@ -4,8 +4,9 @@ import store from './store'
 import { Provider } from 'react-redux'
 import { BrowserRouter, Route } from 'react-router-dom'
 import Home from './pages/home'
-import Detail from './pages/detail'
+import Detail from './pages/detail/loadable.js'
 import Login from './pages/login'
+import Write from './pages/write'
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
           <Route exact path="/login" component={Login}></Route>
           <Route exact path="/" component={Home}></Route>
           <Route exact path="/detail/:id" component={Detail}></Route>
+          <Route exact path="/write" component={Write}></Route>
         </div>
       </BrowserRouter>
     </Provider>
