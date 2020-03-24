@@ -13,4 +13,6 @@
  - 效率要求相对低，但是准确性相对较高场景
  - 文件传输、接收邮件、远程登录...
 
-
+# net 模块
+net 模块用于创建基于流的 TCP 或 IPC 的服务器(net.createServer())与客户端
+  (net.createConnection())
