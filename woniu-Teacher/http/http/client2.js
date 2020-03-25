@@ -1,7 +1,7 @@
 // 客户端
 
 const http = require('http')
-const fs = require('fs')
+
 // http.ClientRequest 类
 // new http.ClientRequest 类
 // http.request()
@@ -10,25 +10,15 @@ const fs = require('fs')
 // 请求行: get，http://127.0.0.1:80/ http/1.1
 const client = http.request({
   // tcp
-  host: 'www.baidu.com',
+  host: '127.0.0.1',
   port: 80,
   // http
   protocol: 'http:',
   method: 'GET',
-  path: '/img/bd_logo1.png',
+  path: '/view',
 }, (res) => {
-  // 这个函授会在服务器响应的时候触发
-  // res => socket
-  // let content = ''
-  let content = Buffer.alloc(0)
   res.on('data', (data) => {
-    // console.log(data.toString())
-    // content += data.toString()
-    content = Buffer.concat([content, data], content.length + data.length)
-  })
-
-  res.on('end', () => {
-    fs.writeFileSync('./baidu.png', content)
+    console.log(data.toString())
   })
 })
 
