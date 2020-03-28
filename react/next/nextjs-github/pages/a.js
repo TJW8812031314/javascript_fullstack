@@ -2,6 +2,18 @@
 import { withRouter } from 'next/router'
 import Link from 'next/link'
 
-const A = ({ router }) => <Link href="#aaa"><a>{router.query.id}</a></Link>
+const A = ({ router, name }) => <Link href="#aaa"><a>{router.query.id}{name}</a></Link>
+
+A.getInitialProps = async() => {
+
+  const promise = new Promise((resolve, reject) => {
+    setTimeout(() => {
+      resolve({
+        name: 'jiawen'
+      })
+    }, 1000)
+  })
+  return await promise
+}
 
 export default withRouter(A)
