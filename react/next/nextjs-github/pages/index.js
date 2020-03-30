@@ -35,6 +35,7 @@ export default () => {
   return (
     <>
       <span>index</span>
+      <span>indexA</span>
     </>
   )
 }

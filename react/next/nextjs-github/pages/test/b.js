@@ -16,7 +16,7 @@ class MyCount extends React.Component {
     }, 1000)
   }
 
-  componentWillMount() {
+  componentWillUnmount() {
     if(this.interval) {
       clearInterval(this.interval)
     }
