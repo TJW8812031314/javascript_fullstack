@@ -1,14 +1,17 @@
 // import React from 'react'
 
 import Router from 'next/router'
+import store from '../store/store'
+
 
 const events = [
-  'routeChangeStart',
-  'routeChangeComplete',
-  'routeChangeError',
-  'beforeHistoryChange',
-  'hashChangeStart',
-  'hashChangeComplete'
+  // 'routeChangeStart',
+  // 'routeChangeComplete',
+  // 'routeChangeError',
+  // 'beforeHistoryChange',
+  // 'hashChangeStart',
+  // 'hashChangeComplete'
+  store
 ]
 
 function makeEvent(type) {
