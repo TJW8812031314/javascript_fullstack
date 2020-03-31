@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 
 class MyCount extends React.Component {
   constructor (props) {
@@ -25,6 +25,21 @@ class MyCount extends React.Component {
   render () {
     return <span>{this.state.count}</span>
   }
+
 }
 
-export default MyCount
+function  MyCountFunc() {
+  const [count, setCount] = useState(0)// 返回[a, b]
+  // const [name, setName] = useState('wn')
+
+  useEffect(() => {// 组件卸载时 执行return
+    const 
+    interval = setInterval(() => {
+      setCount(c => c + 1)
+    }, 1000)
+    return () => clearInterval(interval)
+  }, [])
+
+  return <span>{count}</span>
+}
+export default MyCountFunc

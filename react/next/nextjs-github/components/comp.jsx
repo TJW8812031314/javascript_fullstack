@@ -1,2 +1,2 @@
 
-export default ({ childern }) => <button>{childern}</button>
+export default ({ childern }) => <span>Layz Component</span>
