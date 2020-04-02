@@ -1,0 +1,1 @@
+- npx webpack --config 接文件名
