@@ -1,9 +1,11 @@
 import a from './a'
 import b from './b'
 import pic from './img/test.jpg'
+import './index.css'
 
 var img = new Image()
 img.src = pic
+img.classList.add('pic')
 var root = document.getElementById('root')
 root.appendChild(img)
 
