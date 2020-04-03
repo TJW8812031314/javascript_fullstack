@@ -2,6 +2,8 @@ import a from './a'
 import b from './b'
 import pic from './img/test.jpg'
 import './index.css'
+import axios from 'axios'
+
 
 var img = new Image()
 img.src = pic
@@ -13,6 +15,11 @@ root.appendChild(img)
 // loader
 a()
 b()
+
+axios.get('/api/info').then((res) => {
+  console.log(res)
+})
+
 console.log(pic)
 function lm() {
   console.log('welcome to lm')
