@@ -1,7 +1,9 @@
 const path = require('path')
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
-const MiniCssExtractPlugin = require("mini-css-extract-plugin")
+// const MiniCssExtractPlugin = require("mini-css-extract-plugin")
+const webpack = require('webpack')
+
 module.exports = {
   mode: 'development',// 开发环境
   entry: "./index.js", // 指定打包的入口文件
@@ -31,7 +33,9 @@ module.exports = {
       },
       {
         test: /\.css$/,
-        use: [MiniCssExtractPlugin.loader, "css-loader", "postcss-loader"]
+        use: ['style-loader', "css-loader", "postcss-loader"]
+
+        // use: [MiniCssExtractPlugin.loader, "css-loader", "postcss-loader"]
       },
       {
         test: /\.scss$/,// loader是有顺序的, 从后往前
@@ -39,7 +43,7 @@ module.exports = {
       }
     ]
   },
-  plugins: [
+  plugins: [// 插件
     new HtmlWebpackPlugin({
       template: "./index.html",
       title: "标题自己取de",
@@ -47,17 +51,21 @@ module.exports = {
     }),
     // 打包 前把上一次生成的目录删掉
     new CleanWebpackPlugin(),
+
     // 把css单独打包成一个文件
-    new MiniCssExtractPlugin({
-      filename: "[name].css"
-    })
+    // new MiniCssExtractPlugin({
+    //   filename: "[name].css"
+    // })
+    new webpack.HotModuleReplacementPlugin({})
   ],
   // 跑成一个服务
   devServer: {
     contentBase: "./build",
     open: true,
+    hot: true,
+    hotOnly: true,// 即使HMR不生效，浏览器也不会自动刷新
     port: "8080",
-    // proxy: {
+    // proxy: {// 跨域代理
     //   '/api': 'http://localhost:3000'
     // }
   }
