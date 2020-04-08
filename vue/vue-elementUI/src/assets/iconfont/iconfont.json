@@ -1,0 +1,37 @@
+{
+  "id": "1740004",
+  "name": "youdao",
+  "font_family": "iconfont",
+  "css_prefix_text": "icon-",
+  "description": "",
+  "glyphs": [
+    {
+      "icon_id": "1652788",
+      "name": "拍照",
+      "font_class": "paizhao",
+      "unicode": "e638",
+      "unicode_decimal": 58936
+    },
+    {
+      "icon_id": "1875701",
+      "name": "对话",
+      "font_class": "duihua",
+      "unicode": "e645",
+      "unicode_decimal": 58949
+    },
+    {
+      "icon_id": "9264794",
+      "name": "文档",
+      "font_class": "wendang",
+      "unicode": "e6e9",
+      "unicode_decimal": 59113
+    },
+    {
+      "icon_id": "10806330",
+      "name": "交换",
+      "font_class": "jiaohuan",
+      "unicode": "e60d",
+      "unicode_decimal": 58893
+    }
+  ]
+}
