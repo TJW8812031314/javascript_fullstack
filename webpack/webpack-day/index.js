@@ -1,5 +1,5 @@
 import { add } from './a.js'
-import './index.css'
+// import './index.css'
 add(1, 2)
 
 

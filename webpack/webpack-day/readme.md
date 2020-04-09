@@ -6,3 +6,7 @@
   }
   "sideEffects": false,// 监控所有
   "sideEffects": ["*.css"],// 排除所有css， 不要对css模块的处理
+
+# development vs Production 模式区分打包
+
+# code Splitting

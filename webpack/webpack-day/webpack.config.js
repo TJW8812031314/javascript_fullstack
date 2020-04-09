@@ -15,7 +15,7 @@ module.exports = {
     filename: "index.js"
   },
   devtool: "cheap-module-eval-source-map",// 开发环境
-  // devtool: "cheap-module-eval-source-map"// 线上环境
+  // devtool: "cheap-module-source-map"// 线上环境
   module: {
     // 遇到不认识的模块，就在这里找loader
     rules: [
