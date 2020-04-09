@@ -6,6 +6,7 @@ const webpack = require('webpack')
 
 module.exports = {
   mode: 'development',// 开发环境
+  // mode: 'production ',// 生产环境
   entry: "./index.js", // 指定打包的入口文件
   output: {// 指定打包后的资源位置
     // 公共路径设置
@@ -42,7 +43,7 @@ module.exports = {
         use: ["style-loader", "css-loader", "sass-loader"]
       },
       {
-        test: /\.js$/,
+        test: /\.(js|jsx)$/,
         exclude: /node_modules/,
         use: {
           loader: "babel-loader",
@@ -87,6 +88,9 @@ module.exports = {
     // proxy: {// 跨域代理
     //   '/api': 'http://localhost:3000'
     // }
+  },
+  optimization: {
+    usedExports: true
   }
 
 }

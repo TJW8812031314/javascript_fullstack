@@ -6,11 +6,11 @@
   "description": "",
   "glyphs": [
     {
-      "icon_id": "1652788",
+      "icon_id": "3481310",
       "name": "拍照",
-      "font_class": "paizhao",
-      "unicode": "e638",
-      "unicode_decimal": 58936
+      "font_class": "paizhao1",
+      "unicode": "e60f",
+      "unicode_decimal": 58895
     },
     {
       "icon_id": "1875701",

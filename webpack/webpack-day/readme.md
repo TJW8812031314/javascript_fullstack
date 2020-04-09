@@ -1,1 +1,8 @@
 - npx webpack --config 接文件名
+# tree shaking
+注意： 只有 ES module 的引入方式 ！！！
+  optimization: {
+    usedExports: true
+  }
+  "sideEffects": false,// 监控所有
+  "sideEffects": ["*.css"],// 排除所有css， 不要对css模块的处理

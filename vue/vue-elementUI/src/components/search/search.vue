@@ -3,16 +3,16 @@
     <div class="translate">
       <span class="chinese">中文</span>
       <span class="exchange">
-        <i class="iconfont">&#xe60d;</i>
+        <i class="iconfont icon">&#xe60d;</i>
       </span>
       <span class="english">英文</span>
     </div>
     <div class="input">
       <input class="search-input" type="text" v-model="query" placeholder="在此输入要翻译的文本内容或网址" />
       <!-- <button @click="search">提交</button> -->
-      <div class="Various-translation">
+      <div class="various-translation">
         <span class="photo-translation">
-          <i class="iconfont">&#xe638;</i>
+          <i class="iconfont">&#xe60f;</i>
           拍照翻译
         </span>
         <span class="dialogue-translation">
@@ -25,9 +25,16 @@
         </span>
       </div>
     </div>
-
     <div class="history">
       <ul>
+        <li class="search-item">
+          <div class="item-chinese">决定</div>
+          <div class="item-english">decision</div>
+        </li>
+        <li class="search-item">
+          <div class="item-chinese">决定</div>
+          <div class="item-english">decision</div>
+        </li>
         <li class="search-item">
           <div class="item-chinese">决定</div>
           <div class="item-english">decision</div>
@@ -104,12 +111,15 @@ export default {
   margin-right: 30px;
   font-size: 20px;
 }
+.icon {
+  font-size: 20px;
+}
 .exchange {
   margin-right: 30px;
   border: 1px solid #c0c0c0;
-  border-radius: 35%;
-  padding: 0 7px;
-  opacity: .6;
+  border-radius: 15px;
+  padding: 3px 10px 0 10px;
+  opacity: 0.4;
   font-weight: bold;
 }
 .english {
@@ -127,6 +137,68 @@ export default {
   align-items: center;
   margin: 8px 0 8px 0;
   font-size: 20px;
-  padding: 0 0 50px 0;
+  padding: 0 0 60px 0;
+}
+.various-translation {
+  width: 100%;
+  height: 35px;
+  margin: 8px 0 0 0;
+  padding-bottom: 20px;
+  text-align: center;
+  border-bottom: 1px solid #dddddd;
+  border-radius: 5px;
+  box-shadow: 10px 10px 5px #eeeeee;
+}
+.photo-translation {
+  line-height: 35px;
+  width: 100px;
+  padding: 5px 12px;
+  box-sizing: border-box;
+  border: 1px solid #cccccc;
+  border-radius: 33px;
+  opacity: 0.8;
+  font-size: 14px;
+  background: #f0f0f0;
+}
+.dialogue-translation {
+  line-height: 35px;
+  width: 100px;
+  padding: 5px 12px;
+  box-sizing: border-box;
+  border: 1px solid #cccccc;
+  border-radius: 33px;
+  opacity: 0.8;
+  font-size: 14px;
+  margin-left: 10px;
+  background: #f0f0f0;
+}
+.document-translation {
+  line-height: 35px;
+  width: 100px;
+  padding: 5px 12px;
+  box-sizing: border-box;
+  border: 1px solid #cccccc;
+  border-radius: 33px;
+  opacity: 0.8;
+  font-size: 14px;
+  margin-left: 10px;
+  background: #f0f0f0;
+}
+.history {
+  /* width: 100%; */
+  margin: 20px 30px;
+}
+ul,
+li {
+  list-style-type: none;
+}
+.search-item {
+  margin: 10px 5px;
+}
+.item-chinese {
+  font-weight: bold;
+}
+.item-english {
+  opacity: 0.4;
 }
 </style>
