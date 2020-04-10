@@ -19,7 +19,11 @@ const devConfig = {
     // }
   },
   optimization: {
-    usedExports: true
+    usedExports: true,
+    splitChunks: {// 代码分割
+      chunks: "all",// 同步异步都行
+      minChunks: 1
+    }
   }
 }
 

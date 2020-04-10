@@ -7,12 +7,15 @@ const prodConfig = require('./webpack.prod')
 const merge = require('webpack-merge')
 
 const commonConfig = {
-  entry: "./index.js", // 指定打包的入口文件
+  entry: {
+    // lodash: './lodash.js',
+    index: "./index.js"
+  }, // 指定打包的入口文件
   output: {// 指定打包后的资源位置
     // 公共路径设置
     // publicPath: "https://cdn.biadu.com",
     path: path.resolve(__dirname, "../dist"),
-    filename: "index.js"
+    filename: "[name].js"
   },
   module: {
     // 遇到不认识的模块，就在这里找loader

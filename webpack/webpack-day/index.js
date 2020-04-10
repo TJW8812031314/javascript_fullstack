@@ -1,6 +1,15 @@
-import { add } from './a.js'
+document.addEventListener('click', () => {
+  import(/* webpackPrefetch: true */'./click.js').then(({default: func}) => {
+    func()
+  })
+})
+
+// import _ from 'lodash'// 10MB
+// console.log(_.join(["a", "b", "c"], "***"))// 1MB
+
+// import { add } from './a.js'
 // import './index.css'
-add(1, 2)
+// add(1, 2)
 
 
 

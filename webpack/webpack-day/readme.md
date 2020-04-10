@@ -9,4 +9,10 @@
 
 # development vs Production 模式区分打包
 
-# code Splitting
+# code Splitting 代码分割
+
+# 打包分析stats.json
+
+# webpack 官方推荐的编码方式
+
+# Prefetching/Preloading modules 网络空闲的时候加载
