@@ -9,7 +9,7 @@
     console.log('mysql create database:', res)
 
     res = await query(`
-        CREATE table IF NOT EXISTS test.text  (
+        CREATE table IF NOT EXISTS test1.text  (
             id int,
             text varchar(300),
             primary key(id)
@@ -19,14 +19,14 @@
 
     console.log('mysql create table:', res)
 
-    res = await query('select * from test.text')
+    res = await query('select * from test1.text')
     console.log('mysql:', res)
-    res = await query(`REPLACE INTO test.text (id,text) VALUES(1,'赵本山${new Date()}');`)
+    res = await query(`REPLACE INTO test1.text (id,text) VALUES(1,'赵本山${new Date()}');`)
     console.log('mysql:', res)
 
 
      res = await query(`
-        CREATE table IF NOT EXISTS test.user  (
+        CREATE table IF NOT EXISTS test1.user  (
             id int,
             username varchar(200),
             password varchar(200),
@@ -35,6 +35,6 @@
         );
     `)
     res = await query(`REPLACE INTO 
-        test.user (id,username,password) 
+        test1.user (id,username,password) 
         VALUES(1,'laowang','111111');`)
 })()

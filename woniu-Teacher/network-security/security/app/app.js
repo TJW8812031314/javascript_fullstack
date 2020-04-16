@@ -41,12 +41,12 @@ app.use(views(__dirname + '/views', {
 app.use(async (ctx, next) => {
     await next()
     // 参数出现在HTML内容或属性浏览器会拦截
-    ctx.set('X-XSS-Protection', 0)
+    // ctx.set('X-XSS-Protection', 0)
     // ctx.set('Content-Security-Policy', "default-src 'self'")
     // ctx.set('X-FRAME-OPTIONS', 'DENY')
     // const referer = ctx.request.header.referer
     // console.log('Referer:', referer)
-    ctx.set('X-FRAME-OPTIONS', 'DENY')
+    // ctx.set('X-FRAME-OPTIONS', 'DENY')
     // const referer = ctx.request.header.referer
     // console.log('Referer:', referer)
 
@@ -57,7 +57,7 @@ app.use(async (ctx, next) => {
 
 
 router.get('/', async (ctx) => {
-    res = await query('select * from test.text')
+    res = await query('select * from test1.text')
     // ctx.set('X-FRAME-OPTIONS', 'DENY')
     await ctx.render('index', {
         from: ctx.query.from,
@@ -79,10 +79,17 @@ router.post('/login', async (ctx) => {
     // 可注入写法
     const sql = `
     SELECT *
-    FROM test.user
+    FROM test1.user
     WHERE username = '${ctx.request.body.username}' 
     AND password = '${ctx.request.body.password}'
     `
+    // 1'or'1'='1
+
+    // 正确写法
+    // WHERE username = ？
+    // AND password = ？
+    // res = await query(sql,[username, password])
+
     console.log('sql', sql)
     res = await query(sql)
     console.log('db', res)
@@ -118,7 +125,7 @@ router.post('/updateText', async (ctx) => {
     text = ctx.request.body.text
     // console.log(text , escape(text))
     // text = escape(text)
-    res = await query(`REPLACE INTO test.text (id,text) VALUES(1,'${text}');`)
+    res = await query(`REPLACE INTO test1.text (id,text) VALUES(1,'${text}');`)
     console.log('mysql:', ctx.request.body)
     ctx.redirect('/')
 });

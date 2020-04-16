@@ -4,12 +4,12 @@
     const encryptPassword = require('./password')
     let sql = `
     SELECT *
-    FROM test.user
+    FROM test1.user
     `
     const res = await query(sql)
     const saltDb = async record => {
         sql = `
-        update test.user
+        update test1.user
         set salt = ? ,
         password = ?
         where username = ?
