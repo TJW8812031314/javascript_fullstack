@@ -1,5 +1,5 @@
 import express from 'express'
-import React from 'react'
+import React, {pureComponent} from 'react'
 import { renderToString } from 'react-dom/server'
 import APP from './APP'
 
