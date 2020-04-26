@@ -1,126 +1,133 @@
 <template>
-  <div @click="clickHandle">
-
-    <div class="userinfo" @click="bindViewTap">
-      <img class="userinfo-avatar" v-if="userInfo.avatarUrl" :src="userInfo.avatarUrl" background-size="cover" />
-      <img class="userinfo-avatar" src="/static/images/user.png" background-size="cover" />
-
-      <div class="userinfo-nickname">
-        <card :text="userInfo.nickName"></card>
+  <div class="index">
+    <!-- 头部的搜索 -->
+    <div class="search">
+      <div @click="toMappage">{{cityName}}</div>
+      <div>
+        <input type="text" placeholder="搜索商品" />
+        <span class="icon"></span>
       </div>
     </div>
-
-    <div class="usermotto">
-      <div class="user-motto">
-        <card :text="motto"></card>
+    <div class="swiper">
+      <swiper class="swiper-container" indicator-dots="true" autoplay="true" interval="3000" circular="true" duration="500">
+        <block v-for="(item, index) in banner" :key="index">
+          <swiper-item class="swiper-item">
+            <image class="slide-image" :src="item.image_url"/>
+          </swiper-item>
+        </block>
+      </swiper>
+    </div>
+    <div class="channel">
+      <div v-for="(item, index) in channel" :key="index" @click="categroyList(item.id)">
+        <img :src="item.icon_url" alt="">
+        <p>{{item.name}}</p>
       </div>
     </div>
-
-    <form class="form-container">
-      <input type="text" class="form-control" :value="motto" placeholder="v-model" />
-      <input type="text" class="form-control" v-model="motto" placeholder="v-model" />
-      <input type="text" class="form-control" v-model.lazy="motto" placeholder="v-model.lazy" />
-    </form>
-
-    <a href="/pages/counter/main" class="counter">去往Vuex示例页面</a>
-
-    <div class="all">
-        <div class="left">
+    <div class="brand">
+      <div class="head">
+        品牌制造商直供
+      </div>
+      <div class="content">
+        <div v-for="(item, index) in brandList" :key="index" @click="branddetail(item.id)">
+          <div>
+            <p>{{item.name}}</p>
+            <p class="price">{{item.floor_price}}元起</p>
+          </div>
+          <img :src="item.new_pic_url" alt="">
         </div>
-        <div class="right">
-        </div>
+      </div>
     </div>
   </div>
 </template>
 
 <script>
-import card from '@/components/card'
-
+import amapFile from '../../utils/amap-wx.js'
+import { mapState, mapMutations } from 'vuex'
+import { get } from '../../utils'
 export default {
   data () {
     return {
-      motto: 'Hello miniprograme',
-      userInfo: {
-        nickName: 'mpvue',
-        avatarUrl: 'http://mpvue.com/assets/logo.png'
-      }
+      banner: [],
+      channel: [],
+      brandList: []
     }
   },
-
-  components: {
-    card
+  computed: {
+    ...mapState(['cityName'])
   },
-
+  mounted () {
+    this.getData()
+    this.getCityName()
+  },
   methods: {
-    bindViewTap () {
-      const url = '../logs/main'
-      if (mpvuePlatform === 'wx') {
-        mpvue.switchTab({ url })
-      } else {
-        mpvue.navigateTo({ url })
-      }
+    ...mapMutations(['update']),
+    toMappage () {
+      // 通过 wx.getSetting 先查询一下用户是否授权 “scoped.record”
+      let _this = this
+      wx.getSetting({
+        success: (res) => {
+          // 如果没有同意授权，打开设置
+          // console.log(res)
+          if (!res.authSetting['scope.userLocation']) {
+            wx.openSetting({
+              success: res => {
+                // 获取授权位置信息
+                _this.getCityName()
+              }
+            })
+          } else {
+            wx.navigateTo({
+              url: '/pages/mappage/main',
+            });
+            // _this.getCityName()
+          }
+        },
+        fail: (err) => {
+          console.log(err)
+        },
+        complete: () => {}
+      });
+        
     },
-    clickHandle (ev) {
-      console.log('clickHandle:', ev)
-      // throw {message: 'custom test'}
-    }
-  },
+    getCityName () {
+      let _this = this
+      var myAmapFun = new amapFile.AMapWX({key:'256d94ac927c73a25e9177d789a1d060'});
+      myAmapFun.getRegeo({
+        success: function (data) {
+          // 成功回调
+          console.log(data)
+          // ........
+        },
+        fail: function (info) {
+          // 失败回调
+          console.log(info)
+          // _this.cityName = '北京'
+          _this.update({ cityName: '北京' })
+        }
+      })
+    },
 
-  created () {
-    // let app = getApp()
+    async getData() {
+      const data = await get('/index/index') // http://localhost:5757/lm/index/index
+      console.log(data)
+      this.banner = data.banner
+      this.channel = data.channel
+      this.brandList = data.brandList
+    },
+    categroyList (id) {
+      wx.navigateTo({
+        url: '/pages/categroylist/main?id=' + id
+      })
+    },
+    branddetail (id) {
+      wx.navigateTo({
+        url: '/pages/branddetail/main?id=' + id
+      })
+    }
   }
 }
 </script>
 
-<style scoped>
-.userinfo {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-.userinfo-avatar {
-  width: 128rpx;
-  height: 128rpx;
-  margin: 20rpx;
-  border-radius: 50%;
-}
-
-.userinfo-nickname {
-  color: #aaa;
-}
-
-.usermotto {
-  margin-top: 150px;
-}
-
-.form-control {
-  display: block;
-  padding: 0 12px;
-  margin-bottom: 5px;
-  border: 1px solid #ccc;
-}
-.all{
-  width:7.5rem;
-  height:1rem;
-  background-color:blue;
-}
-.all:after{
-  display:block;
-  content:'';
-  clear:both;
-}
-.left{
-  float:left;
-  width:3rem;
-  height:1rem;
-  background-color:red;
-}
-
-.right{
-  float:left;
-  width:4.5rem;
-  height:1rem;
-  background-color:green;
-}
+<style lang="less" scoped>
+@import "./style.less";
 </style>
