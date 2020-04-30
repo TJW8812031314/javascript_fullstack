@@ -9,7 +9,10 @@ module.exports = app => {
   router.get('/test', controller.home.test);
   router.get('/user', controller.user.index);
   router.get('/getid/:id', controller.user.getId);
-  router.post('/add', controller.user.add)
+  // router.post('/add', controller.user.add)
   router.post('/getUser', controller.user.index)
+  router.get('/list', controller.home.list)
+  router.post('/add', controller.home.add)
+  router.post('/update', controller.home.update)
 };
 
