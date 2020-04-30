@@ -1,26 +1,33 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import './style.css'
 import { Card } from 'antd-mobile'
 import { Link } from 'react-router-dom'
-
-const list = [0, 1, 2, 3, 4, 5, 6, 7]
+import axios from '../utils/axios'
 
 const Home = () => {
+  const [list, setList] = useState([])
+  useEffect(() => {
+    axios.get('/list').then((res) => {
+      // console.log(res)
+      setList(res.data)
+    })
+  }, [list])
+  
   return (
     <div className="diary-list">
       {
         list.map((item) => (
-          <Link to={{ pathname: 'detail', search: `?id=${item}`}} key={item}>
+          <Link to={{ pathname: 'detail', search: `?id=${item.id}`}} key={item.id}>
             <Card className="diary-item" >
               <Card.Header
-                title="我和xx朋友一起吃饭"
-                thumb="https://gw.alipayobjects.com/zos/rmsportal/MRhHctKOineMbKAZslML.jpg"
+                title={item.title}
+                thumb={item.url}
                 extra={<span>晴</span>}
               />
               <Card.Body>
-                <div>{item}</div>
+                <div>{item.title}</div>
               </Card.Body>
-              <Card.Footer content="footer content" extra={<div>extra footer content</div>} />
+              <Card.Footer content= {item.content} />
             </Card>
           </Link>
         ))
