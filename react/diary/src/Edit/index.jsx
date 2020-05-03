@@ -1,18 +1,19 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect } from 'react';
 import './style.css'
-import { Button, List, InputItem, TextareaItem, DatePicker, ImagePicker, Toast } from 'antd-mobile'
+import { Button, Toast, List, InputItem, TextareaItem, DatePicker, ImagePicker } from 'antd-mobile'
 import axios from '../utils/axios'
 import moment from 'moment'
-import { getQueryString } from '../utils/'
+import { getQueryString } from '../utils'
 import { useHistory } from 'react-router-dom'
 
 const Edit = () => {
-  const [date, setDate] = useState()
-  const [content, setContent] = useState()
-  const [title, setTitle] = useState('')
-  const [files, setFile] = useState([])
   const history = useHistory()
+  const [title, setTitle] = useState('')
+  const [content, setCoutent] = useState('')
+  const [date, setDate] = useState()
+  const [files, setFile] = useState([])
   const id = getQueryString('id')
+
   const onChange = (files, type, index) => {
     console.log(files, type, index)
     setFile(files)
@@ -20,17 +21,17 @@ const Edit = () => {
 
   useEffect(() => {
     if (id) {
-      axios.get(`detail/${id}`).then(res => {
+      axios.get(`/detail/${id}`).then(res => {
         console.log(res)
         if (res.data.length) {
-          setTitle(res.data.title)
-          setContent(res.data.content)
-          setDate(res.data.date)
-          setFile([{ url: res.data.url }])
+          setTitle(res.data[0].title)
+          setCoutent(res.data[0].content)
+          setDate(new Date(res.data[0].date))
+          setFile([{url: res.data[0].url}])
         }
       })
     }
-  })
+  }, [])
 
   const publish = () => {
     if (!title || !content || !date) {
@@ -55,13 +56,13 @@ const Edit = () => {
       Toast.success('添加成功')
     })
   }
-  
+
   return (
     <div className="diary-edit">
       <List renderHeader={() => '编辑日记'}>
         <InputItem
           clear
-          placeholder="输入标题"
+          placeholder="请输入标题"
           value={title}
           onChange={(value) => setTitle(value)}
         >标题</InputItem>
@@ -69,7 +70,7 @@ const Edit = () => {
           placeholder="请输入日记内容"
           rows={6}
           value={content}
-          onChange={(value) => setContent(value)}
+          onChange={(value) => setCoutent(value)}
         />
         <DatePicker
           mode="date"
@@ -87,11 +88,10 @@ const Edit = () => {
           selectable={files.length < 1}
           multiple={false}
         />
-        <Button type="primary" onChange={() => publish()}>发布</Button>
+        <Button type="primary" onClick={() => publish()}>发布</Button>
       </List>
     </div>
   )
 }
 
 export default Edit
-

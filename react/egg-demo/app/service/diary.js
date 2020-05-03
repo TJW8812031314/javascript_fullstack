@@ -13,7 +13,6 @@ class DiaryService extends Service {
       return null
     }
   }
-
   async add(params) {
     const { ctx } = this
     try {
@@ -24,14 +23,13 @@ class DiaryService extends Service {
       return null
     }
   }
-
   async update(params) {
     const { ctx } = this
     try {
       const result = await ctx.app.mysql.update('diary', params)
       return result;
     } catch (error) {
-      // console.log(error)
+      console.log(error)
       return null
     }
   }
@@ -51,7 +49,6 @@ class DiaryService extends Service {
       return null
     }
   }
-  
   async delete(id) {
     const { ctx } = this
     try {

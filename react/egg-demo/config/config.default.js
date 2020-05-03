@@ -13,7 +13,7 @@ module.exports = appInfo => {
   const config = exports = {};
 
   // use for cookie sign key, should change to your own and keep security
-  config.keys = appInfo.name + '_1588056884601_3783';
+  config.keys = appInfo.name + '_1588056877422_2182';
 
   // add your middleware config here
   config.middleware = [];
@@ -23,13 +23,13 @@ module.exports = appInfo => {
     // myAppName: 'egg',
   };
 
- // config/config.default.js
+  // config/config.default.js
   config.security = {
     csrf: {
       enable: false,
-      ignoreJSON: true,
+      ignoreJSON: false,
     },
-    domainWhiteList: [ '*' ], // 配置白名单
+    domainWhiteList: ['*'], // 配置白名单
   };
 
   config.cors = {
@@ -38,13 +38,14 @@ module.exports = appInfo => {
     allowMethods: 'GET,HEAD,PUT,POST,DELETE,PATCH,OPTIONS',
   };
 
+
   config.view = {
     mapping: {
       '.html': 'ejs',
     },
   };
 
-  config.mysql = {// 这里就是传统链接数据库
+  config.mysql = { // 这里就是传统写法的创建连接池
     // database configuration
     client: {
       // host
@@ -69,4 +70,3 @@ module.exports = appInfo => {
     ...userConfig,
   };
 };
-

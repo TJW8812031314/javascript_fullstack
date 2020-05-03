@@ -67,7 +67,7 @@ class HomeController extends Controller {
   }
   async getDiaryById() {
     const { ctx } = this
-    // console.log(ctx.params)
+    console.log(ctx.params)
     const result = await ctx.service.diary.diaryById(ctx.params.id)
     if (result) {
       ctx.body = {
