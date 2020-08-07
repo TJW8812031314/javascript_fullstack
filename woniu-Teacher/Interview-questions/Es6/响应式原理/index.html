@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <div id="app">
+    <input type="text" id="txt">
+    <p id="show-txt">0</p>
+  </div>
+  <script>
+    // v-modle的实现原理
+    var obj = {}
+    Object.defineProperty(obj, 'txt', {
+      get () { //往obj取数据的
+        return obj
+      },
+      set (newVal) {// 往obj存数据
+        document.getElementById('show-txt').innerHTML = newVal
+      }
+    })
+  // var txt = document.getElementById('txt')
+  // var showTXt = document.getElementById('show-txt')
+  document.addEventListener('keyup', (event) => {
+    console.log(event)
+    obj.txt = event.target.value
+  })
+  </script>
+</body>
+</html>
