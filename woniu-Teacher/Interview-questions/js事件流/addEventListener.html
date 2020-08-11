@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <div id="app">
+    <div id="wrapper">666</div>
+  </div>
+  <script>
+    // 默认是在冒泡阶段执行，false
+    var node = document.getElementById('app')
+    node.addEventListener(
+      'click',
+      function(event) {
+        console.log('app')
+      },
+      false // 在冒泡阶段再执行 第三个参数控制捕获阶段
+    )
+
+    var wrapper = document.getElementById('wrapper')
+    wrapper.addEventListener(
+      'click',
+      function (event) {
+        // event.stopImmediatePropagation() // 阻止所有
+        event.stopPropagation() // 只阻止冒泡
+        console.log('wapper')
+      },
+      true
+    )
+
+
+  </script>
+</body>
+</html>
