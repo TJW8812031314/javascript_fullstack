@@ -32,7 +32,9 @@ DNS解析也是需要时间的，可以通过预解析的方式来预先获取�
 
 
 # 防抖
+debounce.js
 
 
 
 # 节流
+throttle.js
