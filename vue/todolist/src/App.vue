@@ -10,9 +10,15 @@
         >
         <router-link
           to="/about"
-          class="pb-1"
+          class="pb-1 mr-4"
           active-class="border-b-2 border-gray-700"
           >About</router-link
+        >
+                <router-link
+          to="/parent"
+          class="pb-1"
+          active-class="border-b-2 border-gray-700"
+          >parent</router-link
         >
       </header>
 

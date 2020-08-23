@@ -65,6 +65,7 @@ export default {
 
   methods: {
     async save() {
+      this.todo = '蜗牛'
       this.isFocused = false;
 
       if (this.hasChanges) {
