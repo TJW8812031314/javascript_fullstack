@@ -56,5 +56,9 @@ activated 钩子函数
 扩展组件，让我们将不属于vue的东西扩展到vue的实例当中使用
 
 
-# mixin
+# mixin 和 mixins有什么区别
+mixin 全局混入
+mixins 常用扩展组件的方式，那个组件里面要用就扩展哪个组件
 
+
+# computed 和 watch 区别？
