@@ -21,3 +21,15 @@ git 是分布式的版本控制系统
 买面膜
 买口红 haode 
 卖女装
+
+
+
+
+
+1. 使用弹性布、设置元素为行内块级元素，设置行高、使用定位、
+2. event.stopPropagation(); 阻止冒泡往上传播
+   event.preventDefault();  阻止默认事件
+   jquery中on方法和delegate方法的 jquery.on被选元素添加处理事件，delegate向被选元素子元素添加处理事件
+3. 子元素距父级元素顶端8px
+前端框架使用object.defineProperty()方法来实现数据双向绑定vue中v-molde
+匹配类似的字符串

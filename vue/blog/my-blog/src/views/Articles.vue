@@ -54,6 +54,7 @@ const lazyload = () => {
 
 @Component
 export default class Acticles extends Vue {
+[x: string]: any
   private articlesList: Array<object> = []
 
   mounted(): void {

@@ -4,7 +4,8 @@ const vue = new Vue()
 
 // axios配置 请求不超过10s
 axios.defaults.timeout = 10000
-axios.defaults.baseURL = 'http://localhost:3000'
+// axios.defaults.baseURL = 'http://localhost:3000'
+axios.defaults.baseURL = 'https://www.fastmock.site/mock/87e839620ff1b8e14fcd454066c0051c/news'
 
 // 判断返回状态 res响应拦截
 // Promise 两个参数reject resolve
@@ -23,6 +24,22 @@ export function fetchGet(url, param) {
   return new Promise((resolve, reject) => {
     axios.get(url, {
       params: param
+    })
+    .then(response => {
+      resolve(response.data)
+    }, err => {
+      reject(err)
+    })
+    .catch((error) => {
+      reject(error)
+    })
+  })
+}
+
+export function postData(url, param) {
+  return new Promise((resolve, reject)) => {
+    axios.post(url, {
+      data: param
     })
     .then(response => {
       resolve(response.data)
@@ -58,4 +75,8 @@ export default {
   MusicUrl (id) {
     return fetchGet('/song/url', {id})
   }
+  getList(gameid) {
+    return postData('/list', gameid)
+  }
+
 }
